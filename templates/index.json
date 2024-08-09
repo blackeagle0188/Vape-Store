@@ -1,0 +1,232 @@
+{
+  "sections": {
+    "marketing_message_LgPrKj": {
+      "type": "marketing-message",
+      "blocks": {
+        "column_eFLwVj": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/icon-hdr-delivery.png",
+            "title": "Column",
+            "text": "<p>Free UK Delivery Over £20<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_gxnRWY": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/icon-hdr-ship-3.png",
+            "title": "Column",
+            "text": "<p>We Ship 7 Days a Week<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_3JhNab": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/icon-hdr-trustpilot.png",
+            "title": "Column",
+            "text": "<p>Trustpilot Rated - 'Excellent'<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_ktjaXm": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/icon-hdr-rewards.png",
+            "title": "Column",
+            "text": "<p>Rewards Scheme - Spend & Save<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_eFLwVj",
+        "column_gxnRWY",
+        "column_3JhNab",
+        "column_ktjaXm"
+      ],
+      "settings": {
+        "img_width": 25,
+        "columns_desktop": 4,
+        "column_alignment": "left",
+        "background_style": "none",
+        "button_label": "Button label",
+        "button_link": "",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_banner": {
+      "type": "image-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Browse our latest products",
+            "heading_size": "h0"
+          }
+        },
+        "button": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Shop all",
+            "button_link_1": "shopify:\/\/collections\/all",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "button"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Web-Ban-Xros4-DEAL-ALT.jpg",
+        "image_overlay_opacity": 40,
+        "image_height": "large",
+        "desktop_content_position": "bottom-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-3",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
+    },
+    "rich_text_JEXehK": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_rbRbzP": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Vapestore - Online Vape Shop<\/strong>",
+            "heading_size": "h1"
+          }
+        },
+        "text_CihYKk": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Welcome to Vapestore, one of the UK’s most popular online vape shops. We offer everything a beginner or experienced vaper could possibly need, from <a href=\"https:\/\/www.vapestore.co.uk\/vape-kits-mods.html\" title=\"\/vape-kits-mods.html\"><strong>Vape Kits<\/strong><\/a>, to Vape Pens, Vape Mods, Vape Pods <a href=\"https:\/\/www.vapestore.co.uk\/disposable-vape.html\" title=\"\/pod-vape-kits\/puff-bar.html\"><strong>Disposable Vapes<\/strong><\/a>, <a href=\"https:\/\/www.vapestore.co.uk\/coils.html\" title=\"\/coils.html\"><strong>Vape Coils<\/strong><\/a>, Tanks and an extensive range of premium quality <a href=\"https:\/\/www.vapestore.co.uk\/e-liquid.html\" title=\"\/e-liquid.html\"><strong>E-liquids<\/strong><\/a> from the most popular brands, at the best prices. We provide promotional and <a href=\"https:\/\/www.vapestore.co.uk\/e-liquid\/e-liquid-bundles.html\" title=\"\/e-liquid\/e-liquid-bundles.html\"><strong>multi-buy deals<\/strong><\/a> to help you mix and match your flavours at minimal cost.<\/p>"
+          }
+        },
+        "button_YwaTce": {
+          "type": "button",
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_rbRbzP",
+        "text_CihYKk",
+        "button_YwaTce"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Featured products",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "all",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "scheme-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 44,
+        "padding_bottom": 36
+      }
+    },
+    "newsletter_QJTd9W": {
+      "type": "newsletter",
+      "blocks": {
+        "heading_xWAmVV": {
+          "type": "heading",
+          "settings": {
+            "heading": "Subscribe to our emails",
+            "heading_size": "h1"
+          }
+        },
+        "paragraph_xW8T3B": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Be the first to know about new collections and exclusive offers.<\/p>"
+          }
+        },
+        "email_form_X9P9Tk": {
+          "type": "email_form",
+          "settings": {}
+        },
+        "image_keyaKF": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/e-liquids-sign-up_3_1.png"
+          }
+        },
+        "paragraph_cdTcmP": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>By entering and subscribing your email address, you agree to receive direct marketing communications in accordance with our<a href=\"https:\/\/www.vapestore.co.uk\/pecr-policy\">PECR Policy<\/a>.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_xWAmVV",
+        "paragraph_xW8T3B",
+        "email_form_X9P9Tk",
+        "image_keyaKF",
+        "paragraph_cdTcmP"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "marketing_message_LgPrKj",
+    "image_banner",
+    "rich_text_JEXehK",
+    "featured_collection",
+    "newsletter_QJTd9W"
+  ]
+}

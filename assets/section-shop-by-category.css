@@ -1,0 +1,117 @@
+/* .shop-by-category {
+  margin-top: 0;
+  margin-bottom: 0;
+} */
+
+.shop-by-category-wrapper {
+  padding: 0 20px;
+}
+
+.shop-by-category__item:not(:last-child) {
+  border-right: 1px solid #b5b5b5;
+}
+
+.shop-by-category__item .card-content-wrapper {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  height: 100%;
+}
+
+.card-content-left .card__description {
+  font-size: 1.4rem;
+}
+
+.card-content-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-content-right a {
+  margin-top: 15px;
+}
+
+.shop-by-category-title {
+  margin: 0;
+  width: 100%;
+  font-weight: bold;
+}
+
+.shop-by-category-title.left {
+  text-align: left;
+}
+
+.shop-by-category-title.center {
+  text-align: center;
+}
+
+.shop-by-category-title.right {
+  text-align: right;
+}
+
+@media screen and (max-width: 749px) {
+  .shop-by-category:not(.slider) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .section-shop-by-category .page-width {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .section-shop-by-category .shop-by-category:not(.slider) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+.shop-by-category__item:only-child {
+  max-width: 100%;
+  width: 100%;
+}
+
+@media screen and (max-width: 749px) {
+  .slider.shop-by-category--1-items {
+    padding-bottom: 0;
+  }
+}
+
+@media screen and (min-width: 750px) and (max-width: 989px) {
+
+  .slider.shop-by-category--1-items,
+  .slider.shop-by-category--2-items,
+  .slider.shop-by-category--3-items,
+  .slider.shop-by-category--4-items {
+    padding-bottom: 0;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .shop-by-category__item a:hover {
+    box-shadow: none;
+  }
+}
+
+@media screen and (max-width: 989px) {
+  .shop-by-category.slider .shop-by-category__item {
+    max-width: 100%;
+  }
+}
+
+.shop-by-category-view-all {
+  margin-top: 2rem;
+}
+
+.shop-by-category-link {
+  font-weight: bold;
+  font-size: 1.4rem;
+  border: 1px solid #303030;
+  padding: 5px;
+  border-radius: 4px;
+  max-width: 100px;
+  width: 100%;
+  text-align: center;
+  color: #303030;
+}

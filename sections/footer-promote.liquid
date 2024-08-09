@@ -1,0 +1,112 @@
+{{ 'footer-promote-section.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="footer-promote-container" style="background-color: {{ section.settings.background_color }}">
+  <div class="footer-promote-wrapper">
+    <div class="page-width footer-promote-wrapper-content isolate section-{{ section.id }}-padding">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when '@app' -%}
+            {% render block %}
+          {%- when 'promote' -%}
+            <div class="footer-promote-content scroll-trigger animate--slide-in">
+              <div>
+                {{
+                  block.settings.image
+                  | image_url: width: 70
+                  | image_tag:
+                    widths: '50, 75, 100, 150, 200, 300, 400, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3200',
+                    class: 'footer-promote-image'
+                }}
+              </div>
+              <p>{{ block.settings.promote_text }}</p>
+            </div>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.footer_promote.name",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:settings_schema.colors.settings.background.label",
+      "default": "#121212"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    }
+  ],
+  "blocks": [
+    {
+      "type": "promote",
+      "name": "t:sections.footer_promote.blocks.promote.name",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.footer_promote.blocks.promote.settings.image.label"
+        },
+        {
+          "type": "text",
+          "id": "promote_text",
+          "default": "Enter promote text",
+          "label": "t:sections.footer_promote.blocks.promote.settings.content.label"
+        }
+      ]
+    },
+    {
+      "type": "@app"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.footer_promote.presets.name",
+      "blocks": [
+        {
+          "type": "promote"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,38 @@
+.faqs-wrapper {
+    padding: 0 20px;
+}
+
+.faqs-heading {
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.faqs-content {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.faqs-content p {
+    font-size: 1.4rem;
+    color: #333;
+}
+
+.faq-content {
+    width: 50%;
+}
+
+.faq-content:nth-child(odd) {
+    padding-right: 10px;
+}
+
+.faq-content:nth-child(even) {
+    padding-left: 10px;
+}
+
+@media (max-width: 750px) {
+    .faq-content {
+        width: 100%;
+        padding: 0;
+    }
+}

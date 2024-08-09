@@ -1,0 +1,32 @@
+.footer-promote-wrapper-content {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+    border-top: 1px solid #efefef;
+}
+
+.footer-promote-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footer-promote-content div {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.footer-promote-content p {
+    color: #333;
+    text-align: center;
+    line-height: 2rem;
+}
+
+@media (max-width: 550px) {
+    .footer-promote-wrapper-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
