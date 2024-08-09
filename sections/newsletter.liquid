@@ -28,7 +28,8 @@
               {% render block %}
             {%- when 'heading' -%}
               <h2
-                class="inline-richtext title {{ block.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                class="inline-richtext title {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                style="font-size: {{ section.settings.heading_size }}px"
                 {{ block.shopify_attributes }}
                 {% if settings.animations_reveal_on_scroll %}
                   data-cascade
@@ -171,6 +172,16 @@
       "id": "background_color",
       "label": "t:settings_schema.colors.settings.background.label",
       "default": "#121212"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.heading_size.label",
+      "default": 26
     },
     {
       "type": "checkbox",
