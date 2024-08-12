@@ -731,6 +731,115 @@
         "name": "Shop by Category"
       }
     },
+    "focus-collections": {
+      "name": "Focus collections",
+      "settings": {
+        "title": {
+          "label": "Title"
+        },
+        "column_height": {
+          "label": "Height of column"
+        },
+        "columns_desktop": {
+          "label": "Number of columns on desktop"
+        },
+        "header_mobile": {
+          "content": "Mobile Layout"
+        },
+        "columns_mobile": {
+          "label": "Number of columns on mobile",
+          "options__1": {
+            "label": "1 column"
+          },
+          "options__2": {
+            "label": "2 columns"
+          }
+        },
+      },
+      "blocks": {
+        "title": {
+          "name": "Title",
+          "settings": {
+            "title_label": {
+              "label": "Title"
+            },
+            "title_color": {
+              "label": "Title Color"
+            }
+          }
+        },
+        "bg_image": {
+          "label": "Background Image"
+        },
+        "collection": {
+          "name": "Collection",
+          "settings": {
+            "collection": {
+              "label": "Collection"
+            }
+          }
+        },
+        "badge": {
+          "name": "Badge",
+          "settings": {
+            "badge_image": {
+              "label": "Badge Image",
+              "info": "Badge and title label will be hide if you set badge image."
+            },
+            "badge_label": {
+              "label": "Badge label",
+              "info": "Leave the label blank to hide the badge."
+            },
+            "badge_color": {
+              "label": "Badge Color",
+            },
+            "badge_text_color": {
+              "label": "Badge Text Color",
+            },
+          }
+        },
+        "description": {
+          "name": "Description",
+          "settings": {
+            "description_label": {
+              "label": "Set description",
+              "info": "Leave the label blank to hide the description."
+            },
+            "description_color": {
+              "label": "Description Color",
+            },
+            "price_heading": {
+              "label": "Set price or extra description",
+              "info": "Leave the label blank to hide the description."
+            },
+            "price_heading_color": {
+              "label": "Price or extra description Color",
+            },
+          }
+        },
+        "button": {
+          "name": "Button",
+          "settings": {
+            "button_label": {
+              "label": "Button label",
+              "info": "Leave the label blank to hide the button."
+            },
+            "button_color": {
+              "label": "Button Color",
+            },
+            "button_text_color": {
+              "label": "Button Text Color",
+            },
+            "button_link": {
+              "label": "Button link"
+            },
+          }
+        }
+      },
+      "presets": {
+        "name": "Focus collections"
+      }
+    },
     "contact-form": {
       "name": "Contact Form",
       "presets": {

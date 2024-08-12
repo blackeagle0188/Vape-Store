@@ -1,0 +1,321 @@
+{{ 'focus-collections.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign total_items = section.blocks.size | plus: 2
+  assign grid_rows_count = total_items | minus: 1 | divided_by: 3 | ceil | plus: 1
+-%}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  .focus-collecions-contents {
+      grid-template-rows: repeat({{ grid_rows_count }}, {{  section.settings.column_height }}px);
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="focus-collecions-container">
+  <div class="focus-collecions-wrapper gradient">
+    <div
+      class="page-width isolate section-{{ section.id }}-padding"
+    >
+      <div class="focus-collecions-contents">
+        <div
+          class="focus-collecions-title scroll-trigger animate--slide-in"
+          style="background-color: {{ section.settings.background_color }}"
+        >
+          <h2 style="color: {{ section.settings.title_color }}">{{ section.settings.title }}</h2>
+        </div>
+        {%- for block in section.blocks -%}
+          <div
+            class="focus-collecions-content{{ forloop.index }} scroll-trigger animate--slide-in"
+            {% if block.settings.bg_image != blank %}
+              style="background-image: url('{{ block.settings.bg_image | img_url: '1920x' }}');"
+            {% endif %}
+          >
+            <div class="content-top">
+              {%- if block.settings.badge_image != blank -%}
+                {{
+                  block.settings.badge_image
+                  | image_url: width: 200
+                  | image_tag:
+                    widths: '50, 75, 100, 150, 200, 300, 400, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3200'
+                }}
+              {%- else -%}
+                <div
+                  class="focus-collecion-badge"
+                  style="background-color: {{ block.settings.badge_color }};"
+                >
+                  <h3 style="color: {{ block.settings.badge_text_color }};">{{ block.settings.badge_text }}</h3>
+                </div>
+                <h2 style="color: {{ block.settings.heading_color }}">{{ block.settings.heading }}</h2>
+              {%- endif -%}
+              {%- if block.settings.description != blank -%}
+                <h3 style="color: {{ block.settings.description_color }}">{{ block.settings.description }}</h3>
+              {%- endif -%}
+              {%- if block.settings.price_heading != blank -%}
+                <h3 style="color: {{ block.settings.price_heading_color }}">{{ block.settings.price_heading }}</h3>
+              {%- endif -%}
+            </div>
+            {%- if block.settings.button_label != blank -%}
+              <a
+                {% if block.settings.button_link == blank %}
+                  role="link" aria-disabled="true"
+                {% else %}
+                  href="{{ block.settings.button_link }}"
+                {% endif %}
+                class="focus-collection-button"
+                {{ block.shopify_attributes }}
+                style="background-color: {{ block.settings.button_color }}; color: {{ block.settings.button_text_color }}"
+              >
+                {{ block.settings.button_label }}
+              </a>
+            {%- endif -%}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.focus-collections.name",
+  "tag": "section",
+  "class": "section section-focus-collections",
+  "max_blocks": 15,
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "default": "Vapestore Focus",
+      "label": "t:sections.focus-collections.settings.title.label"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "t:sections.focus-collections.blocks.title.settings.title_color.label",
+      "default": "#fff"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.heading_size.label",
+      "default": 26
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:settings_schema.colors.settings.background.label",
+      "default": "#698cce"
+    },
+    {
+      "type": "range",
+      "id": "column_height",
+      "min": 100,
+      "max": 400,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.focus-collections.settings.column_height.label",
+      "default": 320
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 3,
+      "label": "t:sections.focus-collections.settings.columns_desktop.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "info": "t:sections.all.colors.has_cards_info",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.focus-collections.settings.header_mobile.content"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "options": [
+        {
+          "value": "1",
+          "label": "t:sections.focus-collections.settings.columns_mobile.options__1.label"
+        },
+        {
+          "value": "2",
+          "label": "t:sections.focus-collections.settings.columns_mobile.options__2.label"
+        }
+      ],
+      "default": "1",
+      "label": "t:sections.focus-collections.settings.columns_mobile.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collections",
+      "name": "t:sections.focus-collections.blocks.collection.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Set title",
+          "label": "t:sections.focus-collections.blocks.title.settings.title_label.label"
+        },
+        {
+          "type": "color",
+          "id": "heading_color",
+          "label": "t:sections.focus-collections.blocks.title.settings.title_color.label",
+          "default": "#fff"
+        },
+        {
+          "type": "image_picker",
+          "id": "bg_image",
+          "label": "t:sections.focus-collections.blocks.bg_image.label"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.focus-collections.blocks.badge.name"
+        },
+        {
+          "type": "image_picker",
+          "id": "badge_image",
+          "label": "t:sections.focus-collections.blocks.badge.settings.badge_image.label",
+          "info": "t:sections.focus-collections.blocks.badge.settings.badge_image.info"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "badge_text",
+          "default": "Enter badge text",
+          "label": "t:sections.focus-collections.blocks.badge.settings.badge_label.label"
+        },
+        {
+          "type": "color",
+          "id": "badge_color",
+          "label": "t:sections.focus-collections.blocks.badge.settings.badge_color.label",
+          "default": "#fff"
+        },
+        {
+          "type": "color",
+          "id": "badge_text_color",
+          "label": "t:sections.focus-collections.blocks.badge.settings.badge_text_color.label",
+          "default": "#fff"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.focus-collections.blocks.description.name"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "default": "Enter description",
+          "label": "t:sections.focus-collections.blocks.description.settings.description_label.label",
+          "info": "t:sections.focus-collections.blocks.description.settings.description_label.info"
+        },
+        {
+          "type": "color",
+          "id": "description_color",
+          "label": "t:sections.focus-collections.blocks.description.settings.description_color.label",
+          "default": "#fff"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "price_heading",
+          "default": "£4",
+          "label": "t:sections.focus-collections.blocks.description.settings.price_heading.label",
+          "info": "t:sections.focus-collections.blocks.description.settings.price_heading.info"
+        },
+        {
+          "type": "color",
+          "id": "price_heading_color",
+          "label": "t:sections.focus-collections.blocks.description.settings.price_heading_color.label",
+          "default": "#fff"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.focus-collections.blocks.button.name"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "button_label",
+          "default": "Button label",
+          "label": "t:sections.focus-collections.blocks.button.settings.button_label.label",
+          "info": "t:sections.focus-collections.blocks.button.settings.button_label.info"
+        },
+        {
+          "type": "color",
+          "id": "button_color",
+          "label": "t:sections.focus-collections.blocks.button.settings.button_color.label",
+          "default": "#fff"
+        },
+        {
+          "type": "color",
+          "id": "button_text_color",
+          "label": "t:sections.focus-collections.blocks.button.settings.button_text_color.label",
+          "default": "#fff"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "t:sections.focus-collections.blocks.button.settings.button_link.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.focus-collections.presets.name",
+      "blocks": [
+        {
+          "type": "collections"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
