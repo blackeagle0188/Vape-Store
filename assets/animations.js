@@ -106,7 +106,7 @@ window.onscroll = function () { headerAnimation() };
 var mainContent = document.getElementById("MainContent");
 var header_container = document.getElementsByClassName("header-wrapper")[0];
 var header = document.getElementsByClassName("header__heading")[0];
-var marketing_message = document.getElementsByClassName("marketing-message")[0];
+var marketing_message = document.getElementsByClassName("marketing-message-container")[0];
 var header_height = header_container.offsetHeight;
 var sticky = header.offsetTop + header.offsetHeight;
 console.log(header_height)
@@ -135,3 +135,22 @@ var predictiveSearch = document.getElementsByClassName("predictive-search")[0];
 function searchPredictionVisible() {
   predictiveSearch.style.removeProperty('display');
 }
+
+window.addEventListener('DOMContentLoaded', () => {
+  const goToTopBtn = document.getElementById('go-to-top-btn');
+
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+      goToTopBtn.classList.add('show');
+    } else {
+      goToTopBtn.classList.remove('show');
+    }
+  });
+
+  goToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+});

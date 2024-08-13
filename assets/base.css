@@ -3528,3 +3528,32 @@ details-disclosure>details {
     /* Prevent the border from growing on buttons when this effect is on. */
   }
 }
+
+.go-to-top-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #a5a5a5;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.go-to-top-btn.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.go-to-top-btn svg {
+  width: 20px;
+  height: 20px;
+}
