@@ -1,46 +1,10 @@
-.marketing-message {
-  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
-  z-index: 1;
-  position: relative;
+.marketing-message-wrapper {
+  padding: 0 20px;
 }
 
-.marketing-message.sticky {
-  position: fixed;
-  width: 100%;
-}
+@media screen and (max-width: 749px) {}
 
-.marketing-message .title {
-  margin: 0;
-}
-
-.marketing-message.no-heading .title {
-  display: none;
-}
-
-.marketing-message .title-wrapper-with-link {
-  margin-top: 0;
-}
-
-@media screen and (max-width: 749px) {
-  .marketing-message .title-wrapper-with-link {
-    margin-bottom: 3rem;
-  }
-}
-
-@media screen and (max-width: 989px) {
-  .marketing-message .page-width {
-    padding-left: 0;
-    padding-right: 0;
-  }
-}
-
-.marketing-message-card__image-wrapper--third-width {
-  width: 33%;
-}
-
-.marketing-message-card__image-wrapper--half-width {
-  width: 50%;
-}
+@media screen and (max-width: 989px) {}
 
 .marketing-message-list__item.center .marketing-message-card__image-wrapper:not(.marketing-message-card__image-wrapper--full-width),
 .marketing-message-list__item:only-child {
@@ -48,15 +12,7 @@
   margin-right: auto;
 }
 
-.marketing-message .button {
-  margin-top: 1.5rem;
-}
-
-@media screen and (min-width: 750px) {
-  .marketing-message .button {
-    margin-top: 4rem;
-  }
-}
+@media screen and (min-width: 750px) {}
 
 .marketing-message-list {
   margin-top: 0;
@@ -77,59 +33,32 @@
   align-items: center;
 }
 
-.marketing-message:not(.background-none) .marketing-message-card {
-  background: rgb(var(--color-background));
-  height: 100%;
-}
-
-.marketing-message.background-primary .marketing-message-card {
-  background: rgb(var(--color-background)) linear-gradient(rgba(var(--color-foreground), 0.04), rgba(var(--color-foreground), 0.04));
-}
-
-.marketing-message-list h3 {
-  line-height: calc(1 + 0.5 / max(1, var(--font-heading-scale)));
-}
-
-.marketing-message-list h3,
 .marketing-message-list p {
   margin: 0;
   font-size: 1.4rem;
-}
-
-.marketing-message-card-spacing {
-  padding-top: 2.5rem;
-  margin-left: 2.5rem;
-  margin-right: 2.5rem;
 }
 
 .marketing-message-card__info> :nth-child(2) {
   margin-top: 1rem;
 }
 
-.marketing-message-list__item.center .media--adapt,
-.marketing-message-list__item .media--adapt .marketing-message-card__image {
-  width: auto;
-}
-
-.marketing-message-list__item.center .media--adapt img {
-  left: 50%;
-  transform: translateX(-50%);
+.marketing-message-container.sticky {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
 }
 
 @media screen and (max-width: 749px) {
   .marketing-message-list {
     margin: 0;
     width: 100%;
-  }
-
-  .marketing-message-list:not(.slider) {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
   }
 }
 
 @media screen and (min-width: 750px) and (max-width: 989px) {
-  .marketing-message-list:not(.slider) {
+  .marketing-message-list {
     padding-left: 5rem;
     padding-right: 5rem;
   }
@@ -137,7 +66,6 @@
 
 @media screen and (min-width: 750px) {
 
-  .marketing-message-list.slider,
   .marketing-message-list.grid--4-col-desktop {
     padding: 0;
   }
@@ -146,69 +74,12 @@
   .grid--4-col-desktop .marketing-message-list__item {
     padding-bottom: 0;
   }
-
-  .background-none .grid--2-col-tablet .marketing-message-list__item {
-    margin-top: 4rem;
-  }
-}
-
-.background-none .marketing-message-card-spacing {
-  padding: 0;
-  margin: 0;
-}
-
-/* .marketing-message-card__info {
-  padding: 2.5rem;
-} */
-
-.background-none .marketing-message-card__info {
-  padding-top: 0;
-  padding-left: 0;
-  padding-right: 0;
-}
-
-.background-none .slider .marketing-message-card__info {
-  padding-bottom: 0;
-}
-
-/* .background-none .marketing-message-card__image-wrapper + .marketing-message-card__info {
-  padding-top: 2.5rem;
-} */
-
-.background-none .slider .marketing-message-card__info {
-  padding-left: 0.5rem;
-}
-
-.background-none .slider .marketing-message-card__image-wrapper+.marketing-message-card__info {
-  padding-left: 1rem;
-}
-
-.background-none .marketing-message-list:not(.slider) .center .marketing-message-card__info {
-  padding-left: 2.5rem;
-  padding-right: 2.5rem;
 }
 
 @media screen and (max-width: 749px) {
-  /* .background-none .slider .marketing-message-card__info {
-    padding-bottom: 1rem;
-  } */
-
   .marketing-message.background-none .slider.slider--mobile {
     margin-bottom: 0rem;
   }
-}
-
-@media screen and (min-width: 750px) {
-  /* .background-none .marketing-message-card__image-wrapper {
-    margin-left: 1.5rem;
-    margin-right: 1.5rem;
-  } */
-
-  /* .background-none .marketing-message-list .marketing-message-card__info,
-  .background-none .marketing-message-list:not(.slider) .center .marketing-message-card__info {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  } */
 }
 
 .marketing-message-card {
@@ -220,21 +91,6 @@
   border-top-left-radius: calc(var(--text-boxes-radius) - var(--text-boxes-border-width));
   border-top-right-radius: calc(var(--text-boxes-radius) - var(--text-boxes-border-width));
   overflow: hidden;
-}
-
-.marketing-message.background-none .marketing-message-card {
-  border-radius: 0;
-}
-
-.marketing-message-card__info .link {
-  text-decoration: none;
-  font-size: inherit;
-  margin-top: 1.5rem;
-}
-
-.marketing-message-card__info .icon-wrap {
-  margin-left: 0.8rem;
-  white-space: nowrap;
 }
 
 @media screen and (min-width: 990px) {
@@ -249,7 +105,53 @@
   }
 }
 
+@media (max-width: 768px) {
+  .marketing-message-list {
+    justify-content: space-around;
+  }
+
+  .marketing-message-list li:nth-child(1) {
+    display: flex;
+    justify-content: end;
+    border-right: 2px solid #9b9b9b;
+    padding-right: 10px;
+  }
+
+  .marketing-message-list li:nth-child(2) {
+    display: flex;
+    justify-content: start;
+    padding-left: 10px;
+  }
+
+  .marketing-message-list li:nth-child(1) .marketing-message-card__image-wrapper,
+  .marketing-message-list li:nth-child(2) .marketing-message-card__image-wrapper {
+    display: none;
+  }
+
+  .marketing-message-list li:nth-child(1) .marketing-message-card__info p,
+  .marketing-message-list li:nth-child(2) .marketing-message-card__info p {
+    text-align: center;
+  }
+
+  .marketing-message-list li:nth-child(3),
+  .marketing-message-list li:nth-child(4) {
+    display: none;
+  }
+}
+
+@media (max-width: 1150px) {
+  .marketing-message-list {
+    justify-content: space-around;
+  }
+
+  .marketing-message-list li:nth-child(3),
+  .marketing-message-list li:nth-child(4) {
+    display: none;
+  }
+}
+
 .img_wrapper {
   display: flex;
   align-items: center;
+  margin-right: 15px;
 }

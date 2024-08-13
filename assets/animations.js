@@ -106,7 +106,7 @@ window.onscroll = function () { headerAnimation() };
 var mainContent = document.getElementById("MainContent");
 var header_container = document.getElementsByClassName("header-wrapper")[0];
 var header = document.getElementsByClassName("header__heading")[0];
-var marketing_message = document.getElementsByClassName("marketing-message")[0];
+var marketing_message = document.getElementsByClassName("marketing-message-container")[0];
 var header_height = header_container.offsetHeight;
 var sticky = header.offsetTop + header.offsetHeight;
 console.log(header_height)

@@ -2838,36 +2838,6 @@
             "label": "Center"
           }
         },
-        "background_style": {
-          "label": "Secondary background",
-          "options__1": {
-            "label": "None"
-          },
-          "options__2": {
-            "label": "Show as column background"
-          }
-        },
-        "button_label": {
-          "label": "Button label"
-        },
-        "button_link": {
-          "label": "Button link"
-        },
-        "header_mobile": {
-          "content": "Mobile Layout"
-        },
-        "columns_mobile": {
-          "label": "Number of columns on mobile",
-          "options__1": {
-            "label": "1 column"
-          },
-          "options__2": {
-            "label": "2 columns"
-          }
-        },
-        "swipe_on_mobile": {
-          "label": "Enable swipe on mobile"
-        }
       },
       "blocks": {
         "column": {
