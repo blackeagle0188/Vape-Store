@@ -42,6 +42,10 @@
   margin-top: 1rem;
 }
 
+.marketing-message-container {
+  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+}
+
 .marketing-message-container.sticky {
   position: fixed;
   width: 100%;
