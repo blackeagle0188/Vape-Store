@@ -135,3 +135,22 @@ var predictiveSearch = document.getElementsByClassName("predictive-search")[0];
 function searchPredictionVisible() {
   predictiveSearch.style.removeProperty('display');
 }
+
+window.addEventListener('DOMContentLoaded', () => {
+  const goToTopBtn = document.getElementById('go-to-top-btn');
+
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+      goToTopBtn.classList.add('show');
+    } else {
+      goToTopBtn.classList.remove('show');
+    }
+  });
+
+  goToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+});

@@ -44,7 +44,8 @@
   -%}
   {%- if section.blocks.size > 0
     or section.settings.newsletter_enable
-    or section.settings.show_social and has_social_icons == true
+    or section.settings.show_social
+    and has_social_icons == true
     or section.settings.enable_follow_on_shop
   -%}
     {%- unless only_empty_brand -%}
@@ -370,6 +371,11 @@
       </div>
     </div>
   </div>
+  <button id="go-to-top-btn" class="go-to-top-btn">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+      <path fill-rule="evenodd" d="M11.47 7.72a.75.75 0 011.06 0l3.75 3.75a.75.75 0 11-1.06 1.06L12 9.31l-3.72 3.72a.75.75 0 01-1.06-1.06l3.75-3.75z" clip-rule="evenodd" />
+    </svg>
+  </button>
 </footer>
 
 {% schema %}
