@@ -55,3 +55,10 @@
 .content-top > h2, .content-top > h3 {
   margin: 10px 0;
 }
+
+@media (max-width: 768px) {
+  .focus-collecions-contents {
+    display: flex;
+    flex-direction: column;
+  }
+}
