@@ -109,15 +109,18 @@ var header = document.getElementsByClassName("header__heading")[0];
 var marketing_message = document.getElementsByClassName("marketing-message-container")[0];
 var header_height = header_container.offsetHeight;
 var sticky = header.offsetTop + header.offsetHeight;
-console.log(header_height)
-console.log(header.offsetHeight)
+var viewWidth = 0;
 
 function headerAnimation() {
+  viewWidth = window.innerWidth;
+  console.log(viewWidth)
+  header_height = header_container.offsetHeight;
+  sticky = header.offsetTop + header.offsetHeight;
   if (window.pageYOffset > sticky) {
     header_container.classList.add("sticky");
     marketing_message.classList.add("sticky");
     header_container.style.top = `-${sticky}px`;
-    marketing_message.style.top = `${header_height - sticky}px`;
+    marketing_message.style.top = `${viewWidth < 990 ? header_height : (header_height - sticky)}px`;
     mainContent.style.marginTop = `${marketing_message.offsetHeight + header_height}px`;
   } else {
     header_container.classList.remove("sticky");
