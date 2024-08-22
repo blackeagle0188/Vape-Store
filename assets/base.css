@@ -2372,6 +2372,15 @@ product-info .loading__spinner:not(.hidden)~*,
   /* z-index: initial; */
 }
 
+@media (max-width: 989px) {
+  .shopify-section-header-hidden {
+    top: 0;
+  }
+  .shopify-section-group-header-group {
+    top: 0;
+  }
+}
+
 /* Main Header Layout */
 .header-wrapper {
   display: block;
