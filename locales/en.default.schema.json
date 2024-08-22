@@ -2299,6 +2299,14 @@
             }
           }
         },
+        "metafield": {
+          "name": "Product Description",
+          "settings": {
+            "text": {
+              "label": "Product Description"
+            }
+          }
+        },
         "title": {
           "name": "Title"
         },

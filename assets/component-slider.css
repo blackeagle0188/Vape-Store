@@ -5,6 +5,7 @@ slider-component {
   );
   position: relative;
   display: block;
+  width: 100%;
 }
 
 slider-component.slider-component-full-width {
