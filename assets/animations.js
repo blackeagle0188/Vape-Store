@@ -103,28 +103,16 @@ if (Shopify.designMode) {
 
 window.onscroll = function () { headerAnimation() };
 
-var mainContent = document.getElementById("MainContent");
-var header_container = document.getElementsByClassName("header-wrapper")[0];
 var header = document.getElementsByClassName("header__heading")[0];
-var marketing_message = document.getElementsByClassName("marketing-message-container")[0];
-var header_height = header_container.offsetHeight;
+var marketing_message = document.getElementsByClassName("section-marketing-message")[0];
 var sticky = header.offsetTop + header.offsetHeight;
-console.log(header_height)
-console.log(header.offsetHeight)
 
 function headerAnimation() {
+  sticky = header.offsetTop + header.offsetHeight;
   if (window.pageYOffset > sticky) {
-    header_container.classList.add("sticky");
-    marketing_message.classList.add("sticky");
-    header_container.style.top = `-${sticky}px`;
-    marketing_message.style.top = `${header_height - sticky}px`;
-    mainContent.style.marginTop = `${marketing_message.offsetHeight + header_height}px`;
+    marketing_message.classList.add("fixed");
   } else {
-    header_container.classList.remove("sticky");
-    marketing_message.classList.remove("sticky");
-    header_container.style.top = "0px";
-    marketing_message.style.top = "0px";
-    mainContent.style.marginTop = "0px";
+    marketing_message.classList.remove("fixed");
   }
 }
 

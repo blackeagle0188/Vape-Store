@@ -1,3 +1,19 @@
+.section-marketing-message {
+  position: sticky;
+  z-index: 1;
+  width: 100%;
+  top: var(--header-height);
+  transition: top 0.15s ease-out;
+}
+
+.section-marketing-message.fixed {
+  top: var(--header-height);
+}
+
+.section-marketing-message.animate {
+  top: calc(var(--header-height)*2);
+}
+
 .marketing-message-wrapper {
   padding: 0 20px;
 }
@@ -35,7 +51,8 @@
 
 .marketing-message-list p {
   margin: 0;
-  font-size: 1.4rem;
+  letter-spacing: 0;
+  font-size: 1.2rem;
 }
 
 .marketing-message-card__info> :nth-child(2) {
@@ -46,18 +63,10 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, .1);
 }
 
-.marketing-message-container.sticky {
-  position: fixed;
-  width: 100%;
-  z-index: 1;
-}
-
 @media screen and (max-width: 749px) {
   .marketing-message-list {
     margin: 0;
     width: 100%;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
   }
 }
 

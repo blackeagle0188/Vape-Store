@@ -72,3 +72,9 @@ input::-webkit-search-decoration {
 .template-search__results {
   position: relative;
 }
+
+@media (max-width: 989px) {
+  .search-modal__content {
+    display: none;
+  }
+}

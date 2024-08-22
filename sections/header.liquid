@@ -432,6 +432,7 @@
 
     connectedCallback() {
       this.header = document.querySelector('.section-header');
+      this.marketingMessage = document.querySelector('.section-marketing-message');
       this.headerIsAlwaysSticky = this.getAttribute('data-sticky-type') === 'always' || this.getAttribute('data-sticky-type') === 'reduce-logo-size';
       this.headerBounds = {};
 
@@ -457,7 +458,7 @@
     }
 
     setHeaderHeight() {
-      document.documentElement.style.setProperty('--header-height', `${this.header.offsetHeight}px`);
+      document.documentElement.style.setProperty('--header-height', `${this.header.offsetHeight / 2}px`);
     }
 
     disconnectedCallback() {
@@ -478,13 +479,17 @@
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
       if (this.predictiveSearch && this.predictiveSearch.isOpen) return;
+      if(scrollTop == 0) {
+        this.marketingMessage.classList.remove("animate");
+      }
 
-      if (scrollTop > this.currentScrollTop && scrollTop > this.headerBounds.bottom) {
+      if (scrollTop > this.currentScrollTop && scrollTop > this.headerBounds.bottom / 2) {
         this.header.classList.add('scrolled-past-header');
+        this.marketingMessage.classList.remove("animate");
         if (this.preventHide) return;
         requestAnimationFrame(this.hide.bind(this));
-      } else if (scrollTop < this.currentScrollTop && scrollTop > this.headerBounds.bottom) {
-        this.header.classList.add('scrolled-past-header');
+      } else if (scrollTop < this.currentScrollTop && scrollTop > this.headerBounds.bottom / 2) {
+        this.header.classList.remove('scrolled-past-header');
         if (!this.preventReveal) {
           requestAnimationFrame(this.reveal.bind(this));
         } else {
@@ -515,6 +520,8 @@
       if (this.headerIsAlwaysSticky) return;
       this.header.classList.add('shopify-section-header-sticky', 'animate');
       this.header.classList.remove('shopify-section-header-hidden');
+      this.marketingMessage.classList.remove("fixed");
+      this.marketingMessage.classList.add("animate");
     }
 
     reset() {

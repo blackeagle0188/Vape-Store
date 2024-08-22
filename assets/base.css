@@ -2369,7 +2369,7 @@ product-info .loading__spinner:not(.hidden)~*,
 }
 
 .section-header~.shopify-section-group-header-group {
-  z-index: initial;
+  /* z-index: initial; */
 }
 
 /* Main Header Layout */
@@ -2463,6 +2463,7 @@ product-info .loading__spinner:not(.hidden)~*,
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .header>.header__heading-link {
