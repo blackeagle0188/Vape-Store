@@ -770,6 +770,14 @@
         ]
       }
     </script>
+    {% for block in section.blocks %}
+      {% if block.type == 'product-description' %}
+
+        <div class="product-description page-width">
+          {{ block.settings.text }}
+        </div>
+      {% endif %}
+    {% endfor %}
   </div>
 </section>
 
@@ -787,9 +795,8 @@
       "name": "t:sections.main-product.blocks.text.name",
       "settings": [
         {
-          "type": "inline_richtext",
+          "type": "richtext",
           "id": "text",
-          "default": "Text block",
           "label": "t:sections.main-product.blocks.text.settings.text.label"
         },
         {
@@ -811,6 +818,17 @@
           ],
           "default": "body",
           "label": "t:sections.main-product.blocks.text.settings.text_style.label"
+        }
+      ]
+    },
+    {
+      "type": "product-description",
+      "name": "t:sections.main-product.blocks.metafield.name",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "t:sections.main-product.blocks.metafield.settings.text.label"
         }
       ]
     },

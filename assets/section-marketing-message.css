@@ -1,6 +1,6 @@
 .section-marketing-message {
   position: sticky;
-  z-index: 1;
+  z-index: 10;
   width: 100%;
   top: var(--header-height);
   transition: top 0.15s ease-out;
@@ -14,13 +14,25 @@
   top: calc(var(--header-height)*2);
 }
 
-.marketing-message-wrapper {
-  padding: 0 20px;
-}
-
 @media screen and (max-width: 749px) {}
 
-@media screen and (max-width: 989px) {}
+@media screen and (max-width: 989px) {
+  .section-marketing-message {
+    top: calc(var(--header-height)*2);
+  }
+  
+  .section-marketing-message.fixed {
+    top: calc(var(--header-height)*2);
+  }
+  
+  .section-marketing-message.animate {
+    top: calc(var(--header-height)*2);
+  }
+}
+
+.marketing-message-list {
+  justify-content: space-between;
+}
 
 .marketing-message-list__item.center .marketing-message-card__image-wrapper:not(.marketing-message-card__image-wrapper--full-width),
 .marketing-message-list__item:only-child {
@@ -120,7 +132,9 @@
 
 @media (max-width: 768px) {
   .marketing-message-list {
-    justify-content: space-around;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 0;
   }
 
   .marketing-message-list li:nth-child(1) {
@@ -128,12 +142,14 @@
     justify-content: end;
     border-right: 2px solid #9b9b9b;
     padding-right: 10px;
+    width: fit-content;
   }
 
   .marketing-message-list li:nth-child(2) {
     display: flex;
     justify-content: start;
     padding-left: 10px;
+    width: fit-content;
   }
 
   .marketing-message-list li:nth-child(1) .marketing-message-card__image-wrapper,
