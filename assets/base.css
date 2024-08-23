@@ -3567,3 +3567,42 @@ details-disclosure>details {
   width: 20px;
   height: 20px;
 }
+
+/* Breadcrumbs' styles */
+.breadcrumbs {
+  font-size: .85em;
+  margin: 5rem 0 2em;
+}
+
+.breadcrumbs ol {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.breadcrumbs li {
+  display: inline-block;
+}
+
+.breadcrumbs a {
+  text-decoration: underline;
+}
+
+.breadcrumbs li:not(:last-child):after {  
+  content: "›\00a0";
+  display: inline-block;
+  padding-left: .75ch;
+  speak: none;
+  vertical-align: middle;
+}
+
+.breadcrumbs [aria-current="page"] {
+  color: inherit;
+  font-weight: normal;
+  text-decoration: none;
+}
+
+.breadcrumbs [aria-current="page"]:hover,
+.breadcrumbs [aria-current="page"]:focus {
+  text-decoration: underline;
+}
