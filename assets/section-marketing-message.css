@@ -30,6 +30,10 @@
   }
 }
 
+.marketing-message-list {
+  justify-content: space-between;
+}
+
 .marketing-message-list__item.center .marketing-message-card__image-wrapper:not(.marketing-message-card__image-wrapper--full-width),
 .marketing-message-list__item:only-child {
   margin-left: auto;
@@ -128,7 +132,9 @@
 
 @media (max-width: 768px) {
   .marketing-message-list {
-    justify-content: space-around;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 0;
   }
 
   .marketing-message-list li:nth-child(1) {
@@ -136,12 +142,14 @@
     justify-content: end;
     border-right: 2px solid #9b9b9b;
     padding-right: 10px;
+    width: fit-content;
   }
 
   .marketing-message-list li:nth-child(2) {
     display: flex;
     justify-content: start;
     padding-left: 10px;
+    width: fit-content;
   }
 
   .marketing-message-list li:nth-child(1) .marketing-message-card__image-wrapper,
