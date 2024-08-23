@@ -1,7 +1,3 @@
-.newsletter-wrapper {
-  padding: 0 20px;
-}
-
 @media screen and (min-width: 750px) {
   .newsletter-wrapper {
     /* padding-right: 9rem;

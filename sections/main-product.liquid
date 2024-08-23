@@ -772,7 +772,8 @@
     </script>
     {% for block in section.blocks %}
       {% if block.type == 'product-description' %}
-        <div class="product-description">
+
+        <div class="product-description page-width">
           {{ block.settings.text }}
         </div>
       {% endif %}

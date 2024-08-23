@@ -14,10 +14,6 @@
   top: calc(var(--header-height)*2);
 }
 
-.marketing-message-wrapper {
-  padding: 0 20px;
-}
-
 @media screen and (max-width: 749px) {}
 
 @media screen and (max-width: 989px) {
