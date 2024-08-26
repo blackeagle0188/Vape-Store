@@ -1,7 +1,5 @@
 # VapeShed
 
-[Store Description]
-
 ## Table of Contents
 - [Features](#features)
 - [Installation](#installation)
@@ -18,7 +16,7 @@
 
 ## Installation
 1. [Create a Shopify account](https://www.shopify.com/signup) if you haven't already.
-2. Install the [Store Name] theme from the Shopify Theme Store.
+2. Install the Dawn theme from the Shopify Theme Store.
 3. Customize the theme settings to fit your brand and preferences.
 
 ## Usage
