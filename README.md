@@ -26,7 +26,7 @@
 4. Publish your store and start selling!
 
 ## Customization
-The [Store Name] theme is highly customizable. You can modify the following aspects:
+The Dawn theme is highly customizable. You can modify the following aspects:
 - Header and footer
 - Homepage layout and content
 - Product pages
@@ -38,15 +38,15 @@ Refer to the [Shopify documentation](https://help.shopify.com/en/manual/online-s
 
 ## Support
 If you encounter any issues or have questions, please reach out to our support team:
-- Email: [support@storename.com]
-- Support website: [storename.com/support]
+- Email: blackeagle0188@gmail.com
+- Support website: https://671e38-92.myshopify.com/pages/contact
 
 ## Contributing
-We welcome contributions to the [Store Name] theme. If you'd like to contribute, please follow these steps:
+We welcome contributions to the VapeShed. If you'd like to contribute, please follow these steps:
 1. Fork the repository
 2. Create a new branch for your feature or bug fix
 3. Make your changes and commit them
 4. Submit a pull request
 
 ## License
-The [Store Name] theme is licensed under the [MIT License](LICENSE).
+The VapeShed is licensed under the [MIT License](LICENSE).
