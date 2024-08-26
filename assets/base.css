@@ -2504,6 +2504,7 @@ product-info .loading__spinner:not(.hidden)~*,
 .header__heading-logo {
   height: auto;
   max-width: 100%;
+  mix-blend-mode: screen;
 }
 
 .header__heading-logo-wrapper {
