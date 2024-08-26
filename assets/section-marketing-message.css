@@ -118,6 +118,17 @@
   overflow: hidden;
 }
 
+@media (max-width: 1150px) {
+  .marketing-message-list {
+    justify-content: space-around;
+  }
+
+  .marketing-message-list li:nth-child(3),
+  .marketing-message-list li:nth-child(4) {
+    display: none;
+  }
+}
+
 @media screen and (min-width: 990px) {
   .marketing-message-list__item--empty {
     display: list-item;
@@ -160,17 +171,6 @@
   .marketing-message-list li:nth-child(1) .marketing-message-card__info p,
   .marketing-message-list li:nth-child(2) .marketing-message-card__info p {
     text-align: center;
-  }
-
-  .marketing-message-list li:nth-child(3),
-  .marketing-message-list li:nth-child(4) {
-    display: none;
-  }
-}
-
-@media (max-width: 1150px) {
-  .marketing-message-list {
-    justify-content: space-around;
   }
 
   .marketing-message-list li:nth-child(3),
