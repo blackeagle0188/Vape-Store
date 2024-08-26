@@ -1,4 +1,4 @@
-# [VapeShed]
+# VapeShed
 
 [Store Description]
 
