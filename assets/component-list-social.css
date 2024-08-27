@@ -30,3 +30,7 @@
 .list-social__link:hover .icon {
   transform: scale(1.07);
 }
+
+.list-social__link:hover svg path {
+  fill: #55c2da;
+}

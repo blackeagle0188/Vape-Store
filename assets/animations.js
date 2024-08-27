@@ -107,6 +107,8 @@ var header = document.getElementsByClassName("header__heading")[0];
 var marketing_message = document.getElementsByClassName("section-marketing-message")[0];
 var sticky = header.offsetTop + header.offsetHeight;
 
+document.documentElement.style.setProperty('--main-content-top-margin', `${marketing_message.offsetHeight}px`);
+
 function headerAnimation() {
   sticky = header.offsetTop + header.offsetHeight;
   if (window.pageYOffset > sticky) {
