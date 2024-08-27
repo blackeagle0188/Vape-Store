@@ -2353,7 +2353,7 @@ product-info .loading__spinner:not(.hidden)~*,
 }
 
 .shopify-section-header-hidden {
-  top: calc(-1 * var(--header-height));
+  top: calc(-1 * var(--header-hidden-height));
 }
 
 .shopify-section-header-hidden.menu-open {

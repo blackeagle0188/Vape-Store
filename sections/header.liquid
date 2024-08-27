@@ -432,6 +432,7 @@
 
     connectedCallback() {
       this.header = document.querySelector('.section-header');
+      this.header__heading = document.querySelector('.header__heading');
       this.marketingMessage = document.querySelector('.section-marketing-message');
       this.headerIsAlwaysSticky = this.getAttribute('data-sticky-type') === 'always' || this.getAttribute('data-sticky-type') === 'reduce-logo-size';
       this.headerBounds = {};
@@ -458,7 +459,8 @@
     }
 
     setHeaderHeight() {
-      document.documentElement.style.setProperty('--header-height', `${this.header.offsetHeight / 2}px`);
+      document.documentElement.style.setProperty('--header-height', `${this.header.offsetHeight}px`);
+      document.documentElement.style.setProperty('--header-hidden-height', `${this.header__heading.offsetHeight + 20}px`);
     }
 
     disconnectedCallback() {
