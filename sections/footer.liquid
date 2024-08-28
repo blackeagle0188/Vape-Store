@@ -15,6 +15,11 @@
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
 
+  .footer-block__heading {
+    font-weight: bold;
+    color: {{ section.settings.menu_heading_color }};
+  }
+
   @media screen and (min-width: 750px) {
     .footer {
       margin-top: {{ section.settings.margin_top }}px;
@@ -60,6 +65,112 @@
               assign footer_grid_class = 'grid--3-col-tablet'
             endif
           -%}
+          {% comment %}
+            <div
+              class="footer__blocks-wrapper test-footer {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+            >
+              {%- for block in section.blocks -%}
+                {% assign grid_index = forloop.index | modulo: 4 %}
+                {%- if grid_index == 0 %}
+                  {% assign grid_class_name = 'grid-four' %}
+                {% elsif grid_index == 1 %}
+                  {% assign grid_class_name = 'grid-one' %}
+                {% elsif grid_index == 2 %}
+                  {% assign grid_class_name = 'grid-two' %}
+                {% elsif grid_index == 3 %}
+                  {% assign grid_class_name = 'grid-three' %}
+                {% endif -%}
+                <div
+                  class="footer-block grid__item{% if block.type == 'link_list' %} grid--{{ forloop.index }} {{ grid_class_name }} footer-block--menu{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                  {{ block.shopify_attributes }}
+                  {% if settings.animations_reveal_on_scroll %}
+                    data-cascade
+                    style="--animation-order: {{ forloop.index }};"
+                  {% endif %}
+                >
+                  {%- if block.settings.heading != blank -%}
+                    <h2 class="footer-block__heading inline-richtext">{{- block.settings.heading -}}</h2>
+                  {%- endif -%}
+
+                  {%- case block.type -%}
+                    {%- when '@app' -%}
+                      {% render block %}
+                    {%- when 'text' -%}
+                      <div class="footer-block__details-content rte">
+                        {{ block.settings.subtext }}
+                      </div>
+                    {%- when 'link_list' -%}
+                      {%- if block.settings.menu != blank -%}
+                        <ul class="footer-block__details-content list-unstyled">
+                          {%- for link in block.settings.menu.links -%}
+                            <li>
+                              <a
+                                href="{{ link.url }}"
+                                class="link link--text list-menu__item list-menu__item--link{% if link.active %} list-menu__item--active{% endif %}"
+                              >
+                                {{ link.title }}
+                              </a>
+                            </li>
+                          {%- endfor -%}
+                        </ul>
+                      {%- endif -%}
+                    {%- when 'brand_information' -%}
+                      <div class="footer-block__brand-info">
+                        {%- if settings.brand_image != blank -%}
+                          {%- assign brand_image_height = settings.brand_image_width
+                            | divided_by: settings.brand_image.aspect_ratio
+                          -%}
+                          <div
+                            class="footer-block__image-wrapper"
+                            style="max-width: min(100%, {{ settings.brand_image_width }}px);"
+                          >
+                            {{
+                              settings.brand_image
+                              | image_url: width: 1100
+                              | image_tag:
+                                loading: 'lazy',
+                                widths: '50, 100, 150, 200, 300, 400, 550, 800, 1100',
+                                height: brand_image_height,
+                                width: settings.brand_image_width
+                            }}
+                          </div>
+                        {%- endif -%}
+                        {%- if settings.brand_headline != blank -%}
+                          <h2 class="footer-block__heading rte">{{ settings.brand_headline }}</h2>
+                        {%- endif -%}
+                        {%- if settings.brand_description != blank -%}
+                          <div class="rte">{{ settings.brand_description }}</div>
+                        {%- endif -%}
+                        {%- if block.settings.show_social and has_social_icons -%}
+                          {%- render 'social-icons', class: 'footer__list-social' -%}
+                        {%- endif -%}
+                      </div>
+                    {%- when 'image' -%}
+                      <div class="footer-block__details-content footer-block-image {{ block.settings.alignment }}">
+                        {%- if block.settings.image != blank -%}
+                          {%- assign image_size_2x = block.settings.image_width | times: 2 | at_most: 5760 -%}
+                          <div
+                            class="footer-block__image-wrapper"
+                            style="max-width: min(100%, {{ block.settings.image_width }}px);"
+                          >
+                            <img
+                              srcset="{{ block.settings.image | image_url: width: block.settings.image_width }}, {{ block.settings.image | image_url: width: image_size_2x }} 2x"
+                              src="{{ block.settings.image | image_url: width: 760 }}"
+                              alt="{{ block.settings.image.alt | escape }}"
+                              loading="lazy"
+                              width="{{ block.settings.image.width }}"
+                              height="{{ block.settings.image.height }}"
+                            >
+                          </div>
+                        {%- else -%}
+                          {{ 'image' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
+                        {%- endif -%}
+                      </div>
+                  {%- endcase -%}
+                </div>
+              {%- endfor -%}
+            </div>
+          {% endcomment %}
           <div
             class="footer__blocks-wrapper grid grid--1-col grid--2-col grid--4-col-tablet {{ footer_grid_class }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
             {% if settings.animations_reveal_on_scroll %}
@@ -67,8 +178,18 @@
             {% endif %}
           >
             {%- for block in section.blocks -%}
+              {% assign grid_index = forloop.index | modulo: 4 %}
+              {%- if grid_index == 0 %}
+                {% assign grid_class_name = 'grid-four' %}
+              {% elsif grid_index == 1 %}
+                {% assign grid_class_name = 'grid-one' %}
+              {% elsif grid_index == 2 %}
+                {% assign grid_class_name = 'grid-two' %}
+              {% elsif grid_index == 3 %}
+                {% assign grid_class_name = 'grid-three' %}
+              {% endif -%}
               <div
-                class="footer-block grid__item{% if block.type == 'link_list' %} footer-block--menu{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                class="footer-block grid__item{% if block.type == 'link_list' %} {{ grid_class_name }} footer-block--menu{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
                 {{ block.shopify_attributes }}
                 {% if settings.animations_reveal_on_scroll %}
                   data-cascade
@@ -243,6 +364,48 @@
             {%- render 'social-icons', class: 'footer__list-social' -%}
           {%- endif -%}
         </div>
+        <div class="footer__content-bottom-wrapper page-width{% if section.settings.enable_country_selector == false and section.settings.enable_language_selector == false %} footer__content-bottom-wrapper--center{% endif %}">
+          <div class="footer__copyright caption">
+            <small class="copyright__content"
+              >&copy; {{ 'now' | date: '%Y' }}, {{ shop.name | link_to: routes.root_url -}}
+              .
+            </small>
+            <small class="copyright__content">All rights reserved.</small>
+            {%- if section.settings.show_policy -%}
+              <ul class="policies list-unstyled">
+                {%- for policy in shop.policies -%}
+                  {%- if policy != blank -%}
+                    <li>
+                      <small class="copyright__content"
+                        ><a href="{{ policy.url }}">{{ policy.title }}</a></small
+                      >
+                    </li>
+                  {%- endif -%}
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+          </div>
+        </div>
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'bottom_link_list' -%}
+            {%- if block.settings.bottom_menu != blank -%}
+              <div class="bottom_menu">
+                <ul class="footer-block__details-content list-unstyled">
+                  {%- for link in block.settings.bottom_menu.links -%}
+                    <li>
+                      <a
+                        href="{{ link.url }}"
+                        class="link link--text list-menu__item list-menu__item--link{% if link.active %} list-menu__item--active{% endif %}"
+                      >
+                        {{ link.title }}
+                      </a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              </div>
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
       </div>
     {%- endunless -%}
   {%- endif -%}
@@ -346,27 +509,6 @@
               {%- endfor -%}
             </ul>
           </div>
-        {%- endif -%}
-      </div>
-    </div>
-    <div class="footer__content-bottom-wrapper page-width{% if section.settings.enable_country_selector == false and section.settings.enable_language_selector == false %} footer__content-bottom-wrapper--center{% endif %}">
-      <div class="footer__copyright caption">
-        <small class="copyright__content"
-          >&copy; {{ 'now' | date: '%Y' }}, {{ shop.name | link_to: routes.root_url -}}
-        </small>
-        <small class="copyright__content">{{ powered_by_link }}</small>
-        {%- if section.settings.show_policy -%}
-          <ul class="policies list-unstyled">
-            {%- for policy in shop.policies -%}
-              {%- if policy != blank -%}
-                <li>
-                  <small class="copyright__content"
-                    ><a href="{{ policy.url }}">{{ policy.title }}</a></small
-                  >
-                </li>
-              {%- endif -%}
-            {%- endfor -%}
-          </ul>
         {%- endif -%}
       </div>
     </div>
@@ -483,6 +625,19 @@
           "default": "center"
         }
       ]
+    },
+    {
+      "type": "bottom_link_list",
+      "name": "t:sections.footer.blocks.link_list.settings.bottom_menu.label",
+      "settings": [
+        {
+          "type": "link_list",
+          "id": "bottom_menu",
+          "default": "footer",
+          "label": "t:sections.footer.blocks.link_list.settings.bottom_menu.label",
+          "info": "t:sections.footer.blocks.link_list.settings.bottom_menu.info"
+        }
+      ]
     }
   ],
   "settings": [
@@ -573,6 +728,12 @@
       "id": "show_policy",
       "default": false,
       "label": "t:sections.footer.settings.show_policy.label"
+    },
+    {
+      "type": "color",
+      "id": "menu_heading_color",
+      "label": "t:sections.footer.settings.menu_heading_color.label",
+      "default": "#121212"
     },
     {
       "type": "header",
