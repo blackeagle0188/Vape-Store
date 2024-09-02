@@ -155,10 +155,13 @@ for (i = 0; i < coll.length; i++) {
     if (window.innerWidth < 768) {
       this.classList.toggle("active");
       var content = this.nextElementSibling;
+      var icon = content.nextElementSibling;
       if (content.style.maxHeight) {
         content.style.maxHeight = null;
+        icon.classList.remove("extended");
       } else {
         content.style.maxHeight = content.scrollHeight + "px";
+        icon.classList.add("extended");
       }
     }
   });
