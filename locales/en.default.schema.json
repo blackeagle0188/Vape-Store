@@ -1149,6 +1149,10 @@
             "menu": {
               "label": "Menu",
               "info": "Displays only top-level menu items."
+            },
+            "bottom_menu": {
+              "label": "Bottom Menu",
+              "info": "Displays menu under the social icons."
             }
           }
         },
