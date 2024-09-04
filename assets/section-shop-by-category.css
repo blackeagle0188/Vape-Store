@@ -8,6 +8,12 @@
   padding: 2rem;
 }
 
+@media (max-width: 500px) {
+  .shop-by-category__item>div {
+    padding: 0;
+  }
+}
+
 .shop-by-category__item>div:hover {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
