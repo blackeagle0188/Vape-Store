@@ -740,6 +740,9 @@
         "column_height": {
           "label": "Height of column"
         },
+        "logo_img": {
+          "label": "Logo Image"
+        },
         "columns_desktop": {
           "label": "Number of columns on desktop"
         },

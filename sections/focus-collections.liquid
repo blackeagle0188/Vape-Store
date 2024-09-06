@@ -34,6 +34,14 @@
           style="background-color: {{ section.settings.background_color }}"
         >
           <h2 style="color: {{ section.settings.title_color }}">{{ section.settings.title }}</h2>
+          {% comment %} {%- if section.settings.logo_img != blank -%}
+            {{
+              section.settings.logo_img
+              | image_url: width: 100
+              | image_tag:
+                widths: '50, 75, 100'
+            }}
+          {%- endif -%} {% endcomment %}
         </div>
         {%- for block in section.blocks -%}
           <div

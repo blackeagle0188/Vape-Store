@@ -23,10 +23,8 @@
   if ratio == 0 or ratio == null
     assign ratio = 1
   endif
-  assign card_color_scheme = settings.color_scheme
   assign card_style = settings.card_style
   if wrapper_class == null or wrapper_class == 'none'
-    assign card_color_scheme = settings.collection_card_color_scheme
     assign card_style = settings.collection_card_style
   endif
 -%}
@@ -107,43 +105,6 @@
           {{ 'onboarding.shop_now' | t }}
         </a>
       {%- endif -%}
-      {% comment %}
-        {%- if card_collection == blank -%}
-          <div class="card__media">
-            {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
-          </div>
-        {%- else -%}
-          <div class="card__content">
-            <div class="card__information">
-              <h3 class="card__heading">
-                <a
-                  {% if card_collection == blank %}
-                    role="link" aria-disabled="true"
-                  {% else %}
-                    href="{{ card_collection.url }}"
-                  {% endif %}
-                  class="full-unstyled-link"
-                >
-                  {%- if card_collection.title != blank -%}
-                    {{- card_collection.title | escape -}}
-                  {%- else -%}
-                    {{ 'onboarding.collection_title' | t }}
-                  {%- endif -%}
-                  {%- if card_collection.description == blank -%}
-                    <span class="icon-wrap">{% render 'icon-arrow' %}</span>
-                  {%- endif %}
-                </a>
-              </h3>
-              {%- if card_collection.description != blank -%}
-                <p class="card__caption">
-                  {{- card_collection.description | strip_html | truncatewords: 12 -}}
-                  <span class="icon-wrap">&nbsp;{% render 'icon-arrow' %}</span>
-                </p>
-              {%- endif -%}
-            </div>
-          </div>
-        {%- endif -%}
-      {% endcomment %}
     </div>
   </div>
 </div>
