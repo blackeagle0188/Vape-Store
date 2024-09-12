@@ -89,8 +89,19 @@ slider-component.slider-component-full-width {
   }
 }
 
+.slider.image-slider {
+  position: relative;
+  flex-wrap: inherit;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scroll-padding-left: 1.5rem;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 1rem;
+}
+
 @media screen and (max-width: 989px) {
-  .slider.slider--tablet {
+  .slider {
     position: relative;
     flex-wrap: inherit;
     overflow-x: auto;

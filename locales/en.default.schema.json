@@ -277,6 +277,10 @@
           "label": "Snapchat",
           "info": "https:\/\/www.snapchat.com\/add\/shopify"
         },
+        "social_whatsapp_link": {
+          "label": "WhatsApp",
+          "info": "https:\/\/www.whatsapp.com\/add\/shopify"
+        },
         "social_youtube_link": {
           "label": "YouTube",
           "info": "https:\/\/www.youtube.com\/shopify"
@@ -671,6 +675,61 @@
       },
       "presets": {
         "name": "Collection list"
+      }
+    },
+    "image-slider": {
+      "name": "Image Slider",
+      "settings": {
+        "title": {
+          "label": "Heading"
+        },
+        "image_ratio": {
+          "label": "Image ratio",
+          "options__1": {
+            "label": "Adapt to image"
+          },
+          "options__2": {
+            "label": "Portrait"
+          },
+          "options__3": {
+            "label": "Square"
+          },
+          "info": "Add images by editing your collections. [Learn more](https:\/\/help.shopify.com\/manual\/products\/collections)"
+        },
+        "columns_desktop": {
+          "label": "Number of columns on desktop"
+        },
+        "show_view_all": {
+          "label": "Enable \"View all\" button if list includes more collections than shown"
+        },
+        "header_mobile": {
+          "content": "Mobile Layout"
+        },
+        "columns_mobile": {
+          "label": "Number of columns on mobile",
+          "options__1": {
+            "label": "1 column"
+          },
+          "options__2": {
+            "label": "2 columns"
+          }
+        },
+        "swipe_on_mobile": {
+          "label": "Enable swipe on mobile"
+        }
+      },
+      "blocks": {
+        "image": {
+          "name": "Image",
+          "settings": {
+            "collection": {
+              "label": "Image"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Image Slider"
       }
     },
     "shop-by-category": {
