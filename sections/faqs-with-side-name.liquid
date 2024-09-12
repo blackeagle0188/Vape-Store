@@ -1,0 +1,168 @@
+{{ 'faqs-with-side-name-section.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="faqs-container" style="background-color: {{ section.settings.background_color }}">
+  <div class="faqs-wrapper">
+    <div class="page-width faqs-wrapper-content isolate section-{{ section.id }}-padding">
+      <div class="faqs-content">
+        <div class="faqs-content-left">
+          {%- for block in section.blocks -%}
+            {%- case block.type -%}
+              {%- when 'richtext' -%}
+                {% assign block_index = forloop.index0 %}
+                <div
+                  class="faq-title scroll-trigger animate--slide-in title-{{ block_index }}{% if block_index == 0 %} active{% endif %}"
+                  data-target="content-{{ block_index }}"
+                >
+                  <h2
+                    class="inline-richtext"
+                    style="font-size: {{ section.settings.heading_size }}px"
+                  >
+                    {{ block.settings.title }}
+                  </h2>
+                </div>
+            {%- endcase -%}
+          {%- endfor -%}
+        </div>
+        <div class="faqs-content-right">
+          {%- for block in section.blocks -%}
+            {%- case block.type -%}
+              {%- when 'richtext' -%}
+                {% assign block_index = forloop.index0 %}
+                <div
+                  class="faq-content scroll-trigger animate--slide-in content-{{ block_index }}{% if block_index == 0 %} active{% endif %}"
+                  id="content-{{ block_index }}"
+                >
+                  <p style="font-size: {{ section.settings.content_size }}px">{{ block.settings.content }}</p>
+                </div>
+            {%- endcase -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const titles = document.querySelectorAll('.faq-title');
+  const contents = document.querySelectorAll('.faq-content');
+
+  titles.forEach((title) => {
+    title.addEventListener('click', () => {
+      // Hide all content
+      titles.forEach((content) => content.classList.remove('active'));
+      contents.forEach((content) => content.classList.remove('active'));
+
+      // Show the corresponding content
+      const target = title.getAttribute('data-target');
+      console.log(target);
+      title.classList.add('active');
+      document.getElementById(target).classList.add('active');
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "t:sections.faqs-with-side-name.name",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:settings_schema.colors.settings.background.label",
+      "default": "#121212"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.heading_size.label",
+      "default": 26
+    },
+    {
+      "type": "range",
+      "id": "content_size",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.faqs-with-side-name.settings.content_size.label",
+      "default": 26
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    }
+  ],
+  "blocks": [
+    {
+      "type": "richtext",
+      "name": "t:sections.faqs-with-side-name.blocks.richtext.name",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "title",
+          "default": "Enter faq title",
+          "label": "t:sections.faqs-with-side-name.blocks.richtext.settings.title.label"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "content",
+          "default": "Enter faq content",
+          "label": "t:sections.faqs-with-side-name.blocks.richtext.settings.content.label"
+        }
+      ]
+    },
+    {
+      "type": "@app"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.faqs-with-side-name.presets.name",
+      "blocks": [
+        {
+          "type": "richtext"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -45,6 +45,18 @@
           {%- endcase -%}
         {%- endfor -%}
       </div>
+      {%- if section.settings.button_title != blank -%}
+        <a
+          {% if section.settings.button_link == blank %}
+            role="link" aria-disabled="true"
+          {% else %}
+            href="{{ section.settings.button_link }}"
+          {% endif %}
+          class="button{% if section.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
+        >
+          {{ section.settings.button_title }}
+        </a>
+      {%- endif -%}
     </div>
   </div>
 </div>
@@ -69,6 +81,29 @@
       "id": "background_color",
       "label": "t:settings_schema.colors.settings.background.label",
       "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "t:sections.faqs.settings.button_color.label",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "t:sections.faqs.settings.button_text_color.label",
+      "default": "#fff"
+    },
+    {
+      "type": "text",
+      "id": "button_title",
+      "default": "View All",
+      "label": "t:sections.faqs.settings.button.label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "t:sections.faqs.settings.button.label"
     },
     {
       "type": "range",

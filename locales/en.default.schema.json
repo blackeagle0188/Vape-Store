@@ -2990,6 +2990,15 @@
       "settings": {
         "title": {
           "label": "FAQs"
+        },
+        "button": {
+          "label": "View All"
+        },
+        "button_color": {
+          "label": "Button Color"
+        },
+        "button_text_color": {
+          "label": "Button Text Color"
         }
       },
       "blocks": {
@@ -3007,6 +3016,33 @@
       },
       "presets": {
         "name": "FAQs"
+      }
+    },
+    "faqs-with-side-name": {
+      "name": "FAQs with sidebar of name",
+      "settings": {
+        "title": {
+          "label": "FAQs with sidebar of name"
+        },
+        "content_size": {
+          "label": "Content Size"
+        }
+      },
+      "blocks": {
+        "richtext": {
+          "name": "FAQ title",
+          "settings": {
+            "title": {
+              "label": "FAQ title"
+            },
+            "content": {
+              "label": "FAQ Content"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "FAQs with sidebar of name"
       }
     },
     "footer_promote": {
