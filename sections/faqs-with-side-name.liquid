@@ -33,11 +33,30 @@
                   >
                     {{ block.settings.title }}
                   </h2>
+                  <svg
+                    class="arrow-icon mobile"
+                    fill="rgb(var(--color-foreground))"
+                    height="20px"
+                    width="20px"
+                    version="1.1"
+                    id="Layer_1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    viewBox="0 0 330 330"
+                    xml:space="preserve"
+                  >
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path id="XMLID_225_" d="M325.607,79.393c-5.857-5.857-15.355-5.858-21.213,0.001l-139.39,139.393L25.607,79.393 c-5.857-5.857-15.355-5.858-21.213,0.001c-5.858,5.858-5.858,15.355,0,21.213l150.004,150c2.813,2.813,6.628,4.393,10.606,4.393 s7.794-1.581,10.606-4.394l149.996-150C331.465,94.749,331.465,85.251,325.607,79.393z"></path> </g>
+                  </svg>
+                </div>
+                <div
+                  class="faq-content scroll-trigger animate--slide-in mobile"
+                >
+                  <p style="font-size: {{ section.settings.content_size }}px">{{ block.settings.content }}</p>
                 </div>
             {%- endcase -%}
           {%- endfor -%}
         </div>
-        <div class="faqs-content-right">
+        <div class="faqs-content-right desktop">
           {%- for block in section.blocks -%}
             {%- case block.type -%}
               {%- when 'richtext' -%}
@@ -73,6 +92,26 @@
       document.getElementById(target).classList.add('active');
     });
   });
+
+  var coll = document.getElementsByClassName('faq-title');
+  var i;
+
+  for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener('click', function () {
+      if (window.innerWidth <= 750) {
+        this.classList.toggle('active');
+        var content = this.nextElementSibling;
+        var icon = this.getElementsByClassName('arrow-icon')[0];
+        if (content.style.maxHeight) {
+          content.style.maxHeight = null;
+          icon.classList.remove('extended');
+        } else {
+          content.style.maxHeight = content.scrollHeight + 'px';
+          icon.classList.add('extended');
+        }
+      }
+    });
+  }
 </script>
 
 {% schema %}
