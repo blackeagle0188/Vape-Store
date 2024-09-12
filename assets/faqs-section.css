@@ -18,6 +18,7 @@
     width: 50%;
 }
 
+
 .faq-content:nth-child(odd) {
     padding-right: 10px;
 }
@@ -30,5 +31,13 @@
     .faq-content {
         width: 100%;
         padding: 0;
+    }
+
+    .faq-content:nth-child(odd) {
+        padding-right: 0;
+    }
+    
+    .faq-content:nth-child(even) {
+        padding-left: 0;
     }
 }
