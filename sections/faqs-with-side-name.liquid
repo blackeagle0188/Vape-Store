@@ -1,0 +1,207 @@
+{{ 'faqs-with-side-name-section.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="faqs-container" style="background-color: {{ section.settings.background_color }}">
+  <div class="faqs-wrapper">
+    <div class="page-width faqs-wrapper-content isolate section-{{ section.id }}-padding">
+      <div class="faqs-content">
+        <div class="faqs-content-left">
+          {%- for block in section.blocks -%}
+            {%- case block.type -%}
+              {%- when 'richtext' -%}
+                {% assign block_index = forloop.index0 %}
+                <div
+                  class="faq-title scroll-trigger animate--slide-in title-{{ block_index }}{% if block_index == 0 %} active{% endif %}"
+                  data-target="content-{{ block_index }}"
+                >
+                  <h2
+                    class="inline-richtext"
+                    style="font-size: {{ section.settings.heading_size }}px"
+                  >
+                    {{ block.settings.title }}
+                  </h2>
+                  <svg
+                    class="arrow-icon mobile"
+                    fill="rgb(var(--color-foreground))"
+                    height="20px"
+                    width="20px"
+                    version="1.1"
+                    id="Layer_1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    viewBox="0 0 330 330"
+                    xml:space="preserve"
+                  >
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path id="XMLID_225_" d="M325.607,79.393c-5.857-5.857-15.355-5.858-21.213,0.001l-139.39,139.393L25.607,79.393 c-5.857-5.857-15.355-5.858-21.213,0.001c-5.858,5.858-5.858,15.355,0,21.213l150.004,150c2.813,2.813,6.628,4.393,10.606,4.393 s7.794-1.581,10.606-4.394l149.996-150C331.465,94.749,331.465,85.251,325.607,79.393z"></path> </g>
+                  </svg>
+                </div>
+                <div
+                  class="faq-content scroll-trigger animate--slide-in mobile"
+                >
+                  <p style="font-size: {{ section.settings.content_size }}px">{{ block.settings.content }}</p>
+                </div>
+            {%- endcase -%}
+          {%- endfor -%}
+        </div>
+        <div class="faqs-content-right desktop">
+          {%- for block in section.blocks -%}
+            {%- case block.type -%}
+              {%- when 'richtext' -%}
+                {% assign block_index = forloop.index0 %}
+                <div
+                  class="faq-content scroll-trigger animate--slide-in content-{{ block_index }}{% if block_index == 0 %} active{% endif %}"
+                  id="content-{{ block_index }}"
+                >
+                  <p style="font-size: {{ section.settings.content_size }}px">{{ block.settings.content }}</p>
+                </div>
+            {%- endcase -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const titles = document.querySelectorAll('.faq-title');
+  const contents = document.querySelectorAll('.faq-content');
+
+  titles.forEach((title) => {
+    title.addEventListener('click', () => {
+      // Hide all content
+      titles.forEach((content) => content.classList.remove('active'));
+      contents.forEach((content) => content.classList.remove('active'));
+
+      // Show the corresponding content
+      const target = title.getAttribute('data-target');
+      console.log(target);
+      title.classList.add('active');
+      document.getElementById(target).classList.add('active');
+    });
+  });
+
+  var coll = document.getElementsByClassName('faq-title');
+  var i;
+
+  for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener('click', function () {
+      if (window.innerWidth <= 750) {
+        this.classList.toggle('active');
+        var content = this.nextElementSibling;
+        var icon = this.getElementsByClassName('arrow-icon')[0];
+        if (content.style.maxHeight) {
+          content.style.maxHeight = null;
+          icon.classList.remove('extended');
+        } else {
+          content.style.maxHeight = content.scrollHeight + 'px';
+          icon.classList.add('extended');
+        }
+      }
+    });
+  }
+</script>
+
+{% schema %}
+{
+  "name": "t:sections.faqs-with-side-name.name",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:settings_schema.colors.settings.background.label",
+      "default": "#121212"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.heading_size.label",
+      "default": 26
+    },
+    {
+      "type": "range",
+      "id": "content_size",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.faqs-with-side-name.settings.content_size.label",
+      "default": 26
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    }
+  ],
+  "blocks": [
+    {
+      "type": "richtext",
+      "name": "t:sections.faqs-with-side-name.blocks.richtext.name",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "title",
+          "default": "Enter faq title",
+          "label": "t:sections.faqs-with-side-name.blocks.richtext.settings.title.label"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "content",
+          "default": "Enter faq content",
+          "label": "t:sections.faqs-with-side-name.blocks.richtext.settings.content.label"
+        }
+      ]
+    },
+    {
+      "type": "@app"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.faqs-with-side-name.presets.name",
+      "blocks": [
+        {
+          "type": "richtext"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

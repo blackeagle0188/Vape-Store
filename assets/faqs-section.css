@@ -26,9 +26,23 @@
     padding-left: 10px;
 }
 
+.faqs-wrapper-content {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
 @media (max-width: 750px) {
     .faq-content {
         width: 100%;
         padding: 0;
+    }
+
+    .faq-content:nth-child(odd) {
+        padding-right: 0;
+    }
+
+    .faq-content:nth-child(even) {
+        padding-left: 0;
     }
 }

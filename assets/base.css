@@ -1,3 +1,6 @@
+@import 'slick.css';
+@import 'slick-theme.css';
+
 :root {
   --alpha-button-background: 1;
   --alpha-button-border: 1;
@@ -2802,7 +2805,8 @@ details[open]>.header__submenu {
 
 /* Header menu */
 .header__inline-menu {
-  margin-left: -1.2rem;
+  /* margin-left: -1.2rem; */
+  margin: 0 auto;
   grid-area: navigation;
   display: none;
 }
