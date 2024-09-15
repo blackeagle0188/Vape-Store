@@ -28,21 +28,15 @@
     <div
       class="page-width isolate section-{{ section.id }}-padding"
     >
-      <div class="focus-collecions-contents">
-        <div
-          class="focus-collecions-title scroll-trigger animate--slide-in"
-          style="background-color: {{ section.settings.background_color }}"
+      {%- if section.settings.title != blank -%}
+        <h2
+          class="title inline-richtext center {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+          style="font-size: {{ section.settings.heading_size }}px"
         >
-          <h2 style="color: {{ section.settings.title_color }}">{{ section.settings.title }}</h2>
-          {% comment %} {%- if section.settings.logo_img != blank -%}
-            {{
-              section.settings.logo_img
-              | image_url: width: 100
-              | image_tag:
-                widths: '50, 75, 100'
-            }}
-          {%- endif -%} {% endcomment %}
-        </div>
+          {{ section.settings.title }}
+        </h2>
+      {%- endif -%}
+      <div class="focus-collecions-contents">
         {%- for block in section.blocks -%}
           <div
             class="focus-collecions-content{{ forloop.index }} scroll-trigger animate--slide-in"
