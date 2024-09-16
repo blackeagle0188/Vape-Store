@@ -41,7 +41,7 @@
           <div
             class="focus-collecions-content{{ forloop.index }} scroll-trigger animate--slide-in"
             {% if block.settings.bg_image != blank %}
-              style="background-image: url('{{ block.settings.bg_image | image_url: '1920x' }}');"
+              style="background-image: url('{{ block.settings.bg_image | image_url: width: 800 }}');"
             {% endif %}
           >
             <div class="content-top">
