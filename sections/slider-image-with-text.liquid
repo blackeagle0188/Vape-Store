@@ -31,7 +31,7 @@
 <div
   class="faqs-container"
   {% if section.settings.bg_image != blank %}
-    style="background-image: url('{{ bg_image | img_url: '1920x' }}'); background-repeat: no-repeat; background-position: center; background-size: cover;"
+    style="background-image: url('{{ bg_image | image_url: '1920x' }}'); background-repeat: no-repeat; background-position: center; background-size: cover;"
   {% endif %}
 >
   <div class="faqs-wrapper">
