@@ -23,10 +23,6 @@
   if ratio == 0 or ratio == null
     assign ratio = 1
   endif
-  assign card_style = settings.card_style
-  if wrapper_class == null or wrapper_class == 'none'
-    assign card_style = settings.collection_card_style
-  endif
 -%}
 
 <div class="card-wrapper animate-arrow {% if wrapper_class and wrapper_class != 'none' %}{{ wrapper_class }}{% else %}collection-card-wrapper{% endif %}">
@@ -34,7 +30,7 @@
     class="card-content-wrapper"
     style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
   >
-    {%- if card_collection != blank and card_style == 'card' or card_collection.featured_image -%}
+    {%- if card_collection != blank -%}
       <div class="card-content-left">
         <div class="card__information">
           <h3 class="card__heading">
@@ -47,8 +43,6 @@
           <h4 class="card__description">
             {%- if card_collection.description != blank -%}
               {{- card_collection.description | escape -}}
-            {%- else -%}
-              {{ 'onboarding.collection_description' | t }}
             {%- endif -%}
           </h4>
         </div>
@@ -94,17 +88,17 @@
           loading="lazy"
           class="motion-reduce"
         >
-        <a
-          {% if card_collection == blank %}
-            role="link" aria-disabled="true"
-          {% else %}
-            href="{{ card_collection.url }}"
-          {% endif %}
-          class="full-unstyled-link shop-by-category-link"
-        >
-          {{ 'onboarding.shop_now' | t }}
-        </a>
       {%- endif -%}
+      <a
+        {% if card_collection == blank %}
+          role="link" aria-disabled="true"
+        {% else %}
+          href="{{ card_collection.url }}"
+        {% endif %}
+        class="full-unstyled-link shop-by-category-link"
+      >
+        {{ 'onboarding.shop_now' | t }}
+      </a>
     </div>
   </div>
 </div>

@@ -18,14 +18,6 @@
   }
 {%- endstyle -%}
 
-{%- liquid
-  assign columns_mobile_int = section.settings.columns_mobile | plus: 0
-  assign show_mobile_slider = false
-  if section.settings.swipe_on_mobile and section.blocks.size > columns_mobile_int
-    assign show_mobile_slider = true
-  endif
--%}
-
 <div class="color-{{ section.settings.color_scheme }} gradient">
   <div class="image-list-wrapper page-width isolate{% if section.settings.title == blank %} no-heading{% endif %} section-{{ section.id }}-padding">
     {%- unless section.settings.title == blank -%}
@@ -121,27 +113,6 @@
       "label": "t:sections.all.heading_size.label"
     },
     {
-      "type": "select",
-      "id": "image_ratio",
-      "options": [
-        {
-          "value": "adapt",
-          "label": "t:sections.image-slider.settings.image_ratio.options__1.label"
-        },
-        {
-          "value": "portrait",
-          "label": "t:sections.image-slider.settings.image_ratio.options__2.label"
-        },
-        {
-          "value": "square",
-          "label": "t:sections.image-slider.settings.image_ratio.options__3.label"
-        }
-      ],
-      "default": "square",
-      "label": "t:sections.image-slider.settings.image_ratio.label",
-      "info": "t:sections.image-slider.settings.image_ratio.info"
-    },
-    {
       "type": "range",
       "id": "columns_desktop",
       "min": 1,
@@ -156,12 +127,6 @@
       "label": "t:sections.all.colors.label",
       "info": "t:sections.all.colors.has_cards_info",
       "default": "scheme-1"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_view_all",
-      "default": false,
-      "label": "t:sections.image-slider.settings.show_view_all.label"
     },
     {
       "type": "header",
@@ -182,12 +147,6 @@
       ],
       "default": "1",
       "label": "t:sections.image-slider.settings.columns_mobile.label"
-    },
-    {
-      "type": "checkbox",
-      "id": "swipe_on_mobile",
-      "default": false,
-      "label": "t:sections.image-slider.settings.swipe_on_mobile.label"
     },
     {
       "type": "header",

@@ -1,6 +1,6 @@
 .section-marketing-message {
   position: sticky;
-  z-index: 10;
+  z-index: 1;
   width: 100%;
   top: calc(var(--header-height) - var(--header-hidden-height));
   transition: top 0.15s ease-out;

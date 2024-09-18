@@ -86,7 +86,6 @@
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.2s ease-out;
-        padding-left: 2rem;
     }
 
     .faq-title h2 {
