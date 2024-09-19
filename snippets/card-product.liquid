@@ -164,16 +164,14 @@
             <span class="caption-large light">{{ block.settings.description | escape }}</span>
 
             {%- if show_rating -%}
-              <div
-                class="yotpo-widget-instance"
-                data-yotpo-instance-id="824153"
-                data-yotpo-product-id="{{card_product.id}}"
-                data-yotpo-cart-product-id="{{item.product.id}}"
-                data-yotpo-section-id="{{template.name}}"
-              ></div>
+              <!-- Start of Judge.me code -->
+              <div class="jdgm-widget jdgm-preview-badge">
+                {{ card_product.metafields.judgeme.badge }}
+              </div>
+              <!-- End of Judge.me code -->
             {%- endif -%}
 
-            {%- if show_rating and card_product.metafields.reviews.rating.value != blank -%}
+            {% comment %} {%- if show_rating and card_product.metafields.reviews.rating.value != blank -%}
               {% liquid
                 assign rating_decimal = 0
                 assign decimal = card_product.metafields.reviews.rating.value.rating | modulo: 1
@@ -207,7 +205,7 @@
                   {{ 'accessibility.total_reviews' | t -}}
                 </span>
               </p>
-            {%- endif -%}
+            {%- endif -%} {% endcomment %}
 
             {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
             {%- if card_product.quantity_price_breaks_configured? -%}
