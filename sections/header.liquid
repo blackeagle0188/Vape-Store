@@ -482,12 +482,14 @@
 
       if (this.predictiveSearch && this.predictiveSearch.isOpen) return;
       if(scrollTop == 0) {
-        this.marketingMessage.classList.remove("animate");
+        if(this.marketingMessage !== null)
+          this.marketingMessage.classList.remove("animate");
       }
 
       if (scrollTop > this.currentScrollTop && scrollTop > this.headerBounds.bottom / 2) {
         this.header.classList.add('scrolled-past-header');
-        this.marketingMessage.classList.remove("animate");
+        if(this.marketingMessage !== null)
+          this.marketingMessage.classList.remove("animate");
         if (this.preventHide) return;
         requestAnimationFrame(this.hide.bind(this));
       } else if (scrollTop < this.currentScrollTop && scrollTop > this.headerBounds.bottom / 2) {
@@ -522,8 +524,10 @@
       if (this.headerIsAlwaysSticky) return;
       this.header.classList.add('shopify-section-header-sticky', 'animate');
       this.header.classList.remove('shopify-section-header-hidden');
-      this.marketingMessage.classList.remove("fixed");
-      this.marketingMessage.classList.add("animate");
+      if(this.marketingMessage !== null) {
+        this.marketingMessage.classList.remove("fixed");
+        this.marketingMessage.classList.add("animate");
+      }
     }
 
     reset() {
