@@ -491,13 +491,13 @@
         this.header.classList.add('scrolled-past-header');
         if(this.marketingMessage !== null)
           this.marketingMessage.classList.remove("animate");
-        if (this.product_info !== null)
+        if (this.product_info !== undefined)
           this.product_info.classList.add("scroll-down");
         if (this.preventHide) return;
         requestAnimationFrame(this.hide.bind(this));
       } else if (scrollTop < this.currentScrollTop && scrollTop > this.headerBounds.bottom / 2) {
         this.header.classList.remove('scrolled-past-header');
-        if (this.product_info !== null)
+        if (this.product_info !== undefined)
           this.product_info.classList.remove("scroll-down");
         if (!this.preventReveal) {
           requestAnimationFrame(this.reveal.bind(this));
