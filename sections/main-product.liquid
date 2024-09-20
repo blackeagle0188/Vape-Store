@@ -67,7 +67,7 @@
 
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
   <div class="page-width">
-    <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
+    <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col grid--2-col-tablet">
       <div class="grid__item product__media-wrapper{% if section.settings.media_position == 'right' %} medium-hide large-up-hide{% endif %}">
         {% render 'product-media-gallery', variant_images: variant_images %}
       </div>
@@ -190,6 +190,59 @@
                     {{ product.description }}
                   </div>
                 {%- endif -%}
+              {%- when 'discount' -%}
+                {% for collection in product.collections %}
+                  {%- if collection.title == '2 4 £20' -%}
+                    {%- assign price = product.selected_or_first_available_variant.price -%}
+                    <div class="product__discount">
+                      <span>2 Units</span>
+                      <div class="price-wrapper">
+                        <span>£20 GBP</span>
+                        <span class="original-price">{{ price | times: 2 | money_with_currency }}</span>
+                      </div>
+                    </div>
+                  {%- endif -%}
+                  {%- if collection.title == '4 for 12' -%}
+                    {%- assign price = product.selected_or_first_available_variant.price -%}
+                    <div class="product__discount">
+                      <span>3 Units</span>
+                      <div class="price-wrapper">
+                        <span>£10 GBP</span>
+                        <span class="original-price">{{ price | times: 3 | money_with_currency }}</span>
+                      </div>
+                    </div>
+                  {%- endif -%}
+                  {%- if collection.title == '4 for 12' -%}
+                    {%- assign price = product.selected_or_first_available_variant.price -%}
+                    <div class="product__discount">
+                      <span>4 Units</span>
+                      <div class="price-wrapper">
+                        <span>£12 GBP</span>
+                        <span class="original-price">{{ price | times: 4 | money_with_currency }}</span>
+                      </div>
+                    </div>
+                  {%- endif -%}
+                  {%- if collection.title == '5 4 £20' -%}
+                    {%- assign price = product.selected_or_first_available_variant.price -%}
+                    <div class="product__discount">
+                      <span>5 Units</span>
+                      <div class="price-wrapper">
+                        <span>£20 GBP</span>
+                        <span class="original-price">{{ price | times: 5 | money_with_currency }}</span>
+                      </div>
+                    </div>
+                  {%- endif -%}
+                  {%- if collection.title == 'One Free' -%}
+                    {%- assign price = product.selected_or_first_available_variant.price -%}
+                    <div class="product__discount">
+                      <span>2 Units</span>
+                      <div class="price-wrapper">
+                        <span>{{ price | money_with_currency }}</span>
+                        <span class="original-price">{{ price | times: 2 | money_with_currency }}</span>
+                      </div>
+                    </div>
+                  {%- endif -%}
+                {% endfor %}
               {%- when 'sku' -%}
                 <p
                   class="product__sku no-js-hidden{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.sku.size == 0 %} visibility-hidden{% endif %}"
@@ -772,7 +825,6 @@
     </script>
     {% for block in section.blocks %}
       {% if block.type == 'product-description' %}
-
         <div class="product-description page-width">
           {{ block.settings.text }}
         </div>
@@ -840,6 +892,11 @@
     {
       "type": "price",
       "name": "t:sections.main-product.blocks.price.name",
+      "limit": 1
+    },
+    {
+      "type": "discount",
+      "name": "t:sections.main-product.blocks.discount.name",
       "limit": 1
     },
     {

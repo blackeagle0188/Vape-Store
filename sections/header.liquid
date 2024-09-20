@@ -434,6 +434,7 @@
       this.header = document.querySelector('.section-header');
       this.header__heading = document.querySelector('.header__heading');
       this.marketingMessage = document.querySelector('.section-marketing-message');
+      this.product_info = document.getElementsByTagName("product-info")[0];
       this.headerIsAlwaysSticky = this.getAttribute('data-sticky-type') === 'always' || this.getAttribute('data-sticky-type') === 'reduce-logo-size';
       this.headerBounds = {};
 
@@ -490,10 +491,14 @@
         this.header.classList.add('scrolled-past-header');
         if(this.marketingMessage !== null)
           this.marketingMessage.classList.remove("animate");
+        if (this.product_info !== null)
+          this.product_info.classList.add("scroll-down");
         if (this.preventHide) return;
         requestAnimationFrame(this.hide.bind(this));
       } else if (scrollTop < this.currentScrollTop && scrollTop > this.headerBounds.bottom / 2) {
         this.header.classList.remove('scrolled-past-header');
+        if (this.product_info !== null)
+          this.product_info.classList.remove("scroll-down");
         if (!this.preventReveal) {
           requestAnimationFrame(this.reveal.bind(this));
         } else {
