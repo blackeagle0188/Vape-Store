@@ -591,37 +591,35 @@
 
   customElements.define('sticky-header', StickyHeader);
 
-  $(document).ready(function() {
+  $(document).ready(function () {
+    var isshow = $.cookie("is_show");
+    if (isshow == null) {
+        // set focus when modal is opened
+        $('#modal-content').on('shown.bs.modal', function () {
+            $("#txtname").focus();
+        });
 
-
-var isshow = $.cookie("is_show");
- if (isshow == null) {
-    // set focus when modal is opened
-    $('#modal-content').on('shown.bs.modal', function () {
-        $("#txtname").focus();
-    });
-
-    // show the modal onload
-    $('#modal-content').modal({
-        show: true,
-        backdrop: 'static',
-        keyboard: false
-    });
-
-    // everytime the button is pushed, open the modal, and trigger the shown.bs.modal event
-    $('#openBtn').click(function () {
+        // show the modal onload
         $('#modal-content').modal({
             show: true,
             backdrop: 'static',
             keyboard: false
         });
-    });
 
-    $('.closeftr').click(function() {
-      $.cookie("is_show", 1, { expires: 1 }); // Store
-    })
- }
-});
+        // everytime the button is pushed, open the modal, and trigger the shown.bs.modal event
+        $('#openBtn').click(function () {
+            $('#modal-content').modal({
+                show: true,
+                backdrop: 'static',
+                keyboard: false
+            });
+        });
+
+        $('.closeftr').click(function () {
+            $.cookie("is_show", 1, { expires: 1 }); // Store
+        })
+    }
+  });
 {% endjavascript %}
 
 <script type="application/ld+json">
