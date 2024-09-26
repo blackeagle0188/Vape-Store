@@ -192,7 +192,7 @@
                 {%- endif -%}
               {%- when 'discount' -%}
                 {% for collection in product.collections %}
-                  {%- if collection.title == '2 4 £20' -%}
+                  {%- if collection.title == '2 for £20' -%}
                     {%- assign price = product.selected_or_first_available_variant.price -%}
                     <div class="product__discount">
                       <span>2 Units</span>
@@ -202,7 +202,7 @@
                       </div>
                     </div>
                   {%- endif -%}
-                  {%- if collection.title == '4 for 12' -%}
+                  {%- if collection.title == '4 for £12' -%}
                     {%- assign price = product.selected_or_first_available_variant.price -%}
                     <div class="product__discount">
                       <span>3 Units</span>
@@ -212,7 +212,7 @@
                       </div>
                     </div>
                   {%- endif -%}
-                  {%- if collection.title == '4 for 12' -%}
+                  {%- if collection.title == '3 for £10' -%}
                     {%- assign price = product.selected_or_first_available_variant.price -%}
                     <div class="product__discount">
                       <span>4 Units</span>
@@ -222,7 +222,7 @@
                       </div>
                     </div>
                   {%- endif -%}
-                  {%- if collection.title == '5 4 £20' -%}
+                  {%- if collection.title == '5 for £20' -%}
                     {%- assign price = product.selected_or_first_available_variant.price -%}
                     <div class="product__discount">
                       <span>5 Units</span>
