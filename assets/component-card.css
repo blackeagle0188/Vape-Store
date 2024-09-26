@@ -485,3 +485,9 @@
     clip-path: polygon(var(--shape--blob-5));
   }
 }
+
+.rating,
+.rating-text,
+.rating-count {
+  display: none;
+}
