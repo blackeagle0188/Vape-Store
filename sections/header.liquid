@@ -18,6 +18,7 @@
   {{ 'component-price.css' | asset_url | stylesheet_tag }}
   {{ 'component-discounts.css' | asset_url | stylesheet_tag }}
 {%- endif -%}
+{{ 'age-restrict-modal.css' | asset_url | stylesheet_tag }}
 
 <noscript>{{ 'component-list-menu.css' | asset_url | stylesheet_tag }}</noscript>
 <noscript>{{ 'component-search.css' | asset_url | stylesheet_tag }}</noscript>
@@ -417,6 +418,43 @@
         {%- endif -%}
       </a>
     </div>
+    <div class=""></div>
+    <div id="modal-content" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    {% comment %} <button type="button" class="close" data-dismiss="modal">×</button> {% endcomment %}
+                    <p>
+                      Warning: Age Restriction
+                    </p>
+                </div>
+                <div class="modal-body">
+                  <div class="modal-body-content">
+                  {%- if settings.logo != blank -%}
+                      {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
+                      {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
+                      {% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
+                      {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
+                      {{ settings.logo | image_url: width: 600 | image_tag:
+                        class: 'age-restrict-image',
+                        widths: widths,
+                        height: logo_height,
+                        width: settings.logo_width,
+                        alt: logo_alt,
+                        sizes: sizes,
+                        preload: true
+                      }}
+                  {%- endif -%}
+                  <img src="https://cdn.shopify.com/s/files/1/0824/2875/6312/files/18-plus-age-restriction-icon.svg?v=1727106503" alt="restrict-img" class="restrict-img">
+                </div>
+                    <p>Vape products contain <span class="bold">Nicotine</span>, which is an addictive substance. For your safety and well-being, the sale of <span class="bold">vape products</span> is restricted to individuals aged <span class="bold">18 and older</span>. By continuing, you confirm that you are of legal age to purchase these products.</p>
+                </div>
+                <div class="modal-footer signCenter">
+                    <a href="#" class="btn closeftr" data-dismiss="modal">Continue</a>
+                </div>
+            </div>
+        </div>
+    </div>
   </header>
 </{% if section.settings.sticky_header_type != 'none' %}sticky-header{% else %}div{% endif %}>
 
@@ -434,6 +472,7 @@
       this.header = document.querySelector('.section-header');
       this.header__heading = document.querySelector('.header__heading');
       this.marketingMessage = document.querySelector('.section-marketing-message');
+      this.product_info = document.getElementsByTagName("product-info")[0];
       this.headerIsAlwaysSticky = this.getAttribute('data-sticky-type') === 'always' || this.getAttribute('data-sticky-type') === 'reduce-logo-size';
       this.headerBounds = {};
 
@@ -482,16 +521,22 @@
 
       if (this.predictiveSearch && this.predictiveSearch.isOpen) return;
       if(scrollTop == 0) {
-        this.marketingMessage.classList.remove("animate");
+        if(this.marketingMessage !== null)
+          this.marketingMessage.classList.remove("animate");
       }
 
       if (scrollTop > this.currentScrollTop && scrollTop > this.headerBounds.bottom / 2) {
         this.header.classList.add('scrolled-past-header');
-        this.marketingMessage.classList.remove("animate");
+        if(this.marketingMessage !== null)
+          this.marketingMessage.classList.remove("animate");
+        if (this.product_info !== undefined)
+          this.product_info.classList.add("scroll-down");
         if (this.preventHide) return;
         requestAnimationFrame(this.hide.bind(this));
       } else if (scrollTop < this.currentScrollTop && scrollTop > this.headerBounds.bottom / 2) {
         this.header.classList.remove('scrolled-past-header');
+        if (this.product_info !== undefined)
+          this.product_info.classList.remove("scroll-down");
         if (!this.preventReveal) {
           requestAnimationFrame(this.reveal.bind(this));
         } else {
@@ -522,8 +567,10 @@
       if (this.headerIsAlwaysSticky) return;
       this.header.classList.add('shopify-section-header-sticky', 'animate');
       this.header.classList.remove('shopify-section-header-hidden');
-      this.marketingMessage.classList.remove("fixed");
-      this.marketingMessage.classList.add("animate");
+      if(this.marketingMessage !== null) {
+        this.marketingMessage.classList.remove("fixed");
+        this.marketingMessage.classList.add("animate");
+      }
     }
 
     reset() {
@@ -543,6 +590,36 @@
   }
 
   customElements.define('sticky-header', StickyHeader);
+
+  $(document).ready(function () {
+    var isshow = $.cookie("is_show");
+    if (isshow == null) {
+        // set focus when modal is opened
+        $('#modal-content').on('shown.bs.modal', function () {
+            $("#txtname").focus();
+        });
+
+        // show the modal onload
+        $('#modal-content').modal({
+            show: true,
+            backdrop: 'static',
+            keyboard: false
+        });
+
+        // everytime the button is pushed, open the modal, and trigger the shown.bs.modal event
+        $('#openBtn').click(function () {
+            $('#modal-content').modal({
+                show: true,
+                backdrop: 'static',
+                keyboard: false
+            });
+        });
+
+        $('.closeftr').click(function () {
+            $.cookie("is_show", 1, { expires: 1 }); // Store
+        })
+    }
+  });
 {% endjavascript %}
 
 <script type="application/ld+json">

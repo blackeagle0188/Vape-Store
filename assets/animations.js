@@ -107,14 +107,17 @@ var header = document.getElementsByClassName("header__heading")[0];
 var marketing_message = document.getElementsByClassName("section-marketing-message")[0];
 var sticky = header.offsetTop + header.offsetHeight;
 
-document.documentElement.style.setProperty('--main-content-top-margin', `${marketing_message.offsetHeight}px`);
+if (marketing_message !== undefined)
+  document.documentElement.style.setProperty('--main-content-top-margin', `${marketing_message.offsetHeight}px`);
 
 function headerAnimation() {
-  sticky = header.offsetTop + header.offsetHeight;
-  if (window.pageYOffset > sticky) {
-    marketing_message.classList.add("fixed");
-  } else {
-    marketing_message.classList.remove("fixed");
+  if (marketing_message !== undefined) {
+    sticky = header.offsetTop + header.offsetHeight;
+    if (window.pageYOffset > sticky) {
+      marketing_message.classList.add("fixed");
+    } else {
+      marketing_message.classList.remove("fixed");
+    }
   }
 }
 

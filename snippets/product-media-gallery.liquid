@@ -119,6 +119,15 @@
           </li>
         {%- endunless -%}
       {%- endfor -%}
+      {%- if product.media.size == 0 -%}
+        <li
+          id="Slide-{{ section.id }}-{{ id_append }}"
+          class="product__media-item grid__item slider__slide is-active{% if single_media_visible %} product__media-item--single{% endif %} product__media-item--full product__media-item--variant{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+          data-media-id="{{ section.id }}"
+        >
+          {{ 'product-1' | placeholder_svg_tag }}
+        </li>
+      {%- endif -%}
     </ul>
     {%- unless is_duplicate -%}
       <div class="slider-buttons no-js-hidden quick-add-hidden{% if hide_mobile_slider %} small-hide{% endif %}">

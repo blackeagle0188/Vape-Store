@@ -1,0 +1,43 @@
+.logo-bar__item {
+    cursor: pointer;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-bar__item a {
+    position: relative;
+    box-sizing: content-box;
+    border: 2px solid #55c2da;
+}
+
+.logo-bar__item a::before,
+.logo-bar__item a::after {
+    display: block;
+    content: "";
+    width: 20px;
+    height: 20px;
+    position: absolute;
+}
+
+.logo-bar__item a::before {
+    top: -2px;
+    left: -2px;
+    border-top: 2px solid #000;
+    border-left: 2px solid #000;
+    transition: 0.5s all;
+}
+
+.logo-bar__item a::after {
+    bottom: -2px;
+    right: -2px;
+    border-bottom: 2px solid #000;
+    border-right: 2px solid #000;
+    transition: 0.5s all;
+}
+
+.logo-bar__item a:hover::before,
+.logo-bar__item a:hover::after {
+    width: calc(100% + 2px);
+    height: calc(100% + 2px);
+}
