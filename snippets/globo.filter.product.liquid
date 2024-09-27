@@ -32,15 +32,34 @@
   >
     <div class="spf-product-card spf-product-card__center spf-product-card__template-1{% unless product.available %} spf-soldout{% endunless %}">
       <div class="spf-product-card__inner">
-        {%- unless product.available -%}
-          <span translatable class="spf-product__label spf-product__label-soldout">
-            {{- translation.product.sold_out | default: 'Sold out' -}}
-          </span>
-        {% elsif product_compare_at_price > product_price %}
-          <span translatable class="spf-product__label spf-product__label-sale sale-text">
-            {{ translation.product.sale | default: 'Sale' }}
-          </span>
-        {%- endunless -%}
+        <div class="spf-product-card__badges">
+          {%- unless product.available -%}
+            {%- comment -%}<span translatable class="spf-product__label-soldout">
+              {{- translation.product.sold_out | default: 'Sold out' -}}
+            </span>{%- endcomment -%}
+          {% elsif product_compare_at_price > product_price %}
+            <span translatable class="spf-product__label-sale sale-text">
+              {{ translation.product.sale | default: 'Sale' }}
+            </span>
+          {%- endunless -%}
+          {% for collection in product.collections %}
+            {%- if collection.title == '2 for £20' -%}
+              <span translatable class="spf-product__label-discount">2 for £20</span>
+            {%- endif -%}
+            {%- if collection.title == '4 for £12' -%}
+              <span translatable class="spf-product__label-discount">4 for £12</span>
+            {%- endif -%}
+            {%- if collection.title == '3 for £10' -%}
+              <span translatable class="spf-product__label-discount">3 for £10</span>
+            {%- endif -%}
+            {%- if collection.title == '5 for £20' -%}
+              <span translatable class="spf-product__label-discount">5 for £20</span>
+            {%- endif -%}
+            {%- if collection.title == 'One Free' -%}
+              <span translatable class="spf-product__label-discount">One Free</span>
+            {%- endif -%}
+          {% endfor %}
+        </div>
         <a
           title="Quick view"
           href="javascript:;"

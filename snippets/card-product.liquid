@@ -48,6 +48,25 @@
       "
       style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
     >
+      <div class="spf-product-card__badges">
+        {% for collection in card_product.collections %}
+          {%- if collection.title == '2 for £20' -%}
+            <span translatable class="spf-product__label-discount">2 for £20</span>
+          {%- endif -%}
+          {%- if collection.title == '4 for £12' -%}
+            <span translatable class="spf-product__label-discount">4 for £12</span>
+          {%- endif -%}
+          {%- if collection.title == '3 for £10' -%}
+            <span translatable class="spf-product__label-discount">3 for £10</span>
+          {%- endif -%}
+          {%- if collection.title == '5 for £20' -%}
+            <span translatable class="spf-product__label-discount">5 for £20</span>
+          {%- endif -%}
+          {%- if collection.title == 'One Free' -%}
+            <span translatable class="spf-product__label-discount">One Free</span>
+          {%- endif -%}
+        {% endfor %}
+      </div>
       <div
         class="card__inner {% if settings.card_style == 'standard' %}color-{{ settings.card_color_scheme }} gradient{% endif %}{% if card_product.featured_media or settings.card_style == 'standard' %} ratio{% endif %}"
       >
